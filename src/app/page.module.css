@@ -10,23 +10,6 @@
   font-family: var(--font-geist-sans);
 }
 
-.logo {
-  width: 30%;
-}
-
-.searchSection {
-  width: 90%;
-  gap: 6px;
-  display: flex;
-}
-.searchSection > input {
-  width: 90%;
-}
-
-.divider {
-  border: 1px #7d9871 solid;
-}
-
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
@@ -38,20 +21,9 @@
   }
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
 @media (max-width: 600px) {
   .page {
     padding: 32px;
     padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
   }
 }
