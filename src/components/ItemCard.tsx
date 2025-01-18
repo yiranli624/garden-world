@@ -10,7 +10,6 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
           alt='picture of the selling item'
           width={384}
           height={384}
-          className=''
         />
         <Image
           src='/assets/shopping-cart.svg'
