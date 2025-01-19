@@ -1,4 +1,4 @@
-import { ProductItem } from "./constants";
+import { ProductItem } from "@/components/testData";
 import { ItemCard } from "./";
 
 export default function BrowsingSection({

@@ -1,7 +1,7 @@
 "use client";
 import classNames from "classnames";
 import React, { useState, useEffect } from "react";
-import { NavItems } from "./constants";
+import { NavItems } from "@/app/layout";
 import Link from "next/link";
 
 export default function NavigationBar({

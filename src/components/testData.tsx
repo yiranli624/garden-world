@@ -1,4 +1,17 @@
-import { ProductItem } from "./constants";
+export type ProductItem = {
+  slug: string;
+  label: string;
+  image: string;
+  originalPrice: number;
+  shortDescription: string;
+  categories: string[];
+  sku: string;
+  description: string;
+  additionalInfo: string;
+  salesPrice?: number;
+  plantingGuild?: string;
+  stockAmount?: number;
+};
 
 export const test_products: ProductItem[] = [
   {
@@ -8,12 +21,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 249,
     salesPrice: 149,
     shortDescription: "",
-    categories: [
-      { slug: "bok-choy", label: "Bok Choy" },
-      { slug: "leafy-greens", label: "Leafy Greens" },
-      { slug: "cold-weather", label: "Cold Weather" },
-      { slug: "easy", label: "Easy" }
-    ],
+    categories: ["bok-choy", "leafy-greens", "cold-weather", "easy"],
     sku: "A083",
     description: "",
     additionalInfo: "",
@@ -26,12 +34,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/Bok-Choy-Dark-Green.jpg",
     originalPrice: 199,
     shortDescription: "",
-    categories: [
-      { slug: "bok-choy", label: "Bok Choy" },
-      { slug: "leafy-greens", label: "Leafy Greens" },
-      { slug: "cool-weather", label: "Cool Weather" },
-      { slug: "easy", label: "Easy" }
-    ],
+    categories: ["bok-choy", "leafy-greens", "cool-weather", "easy"],
     sku: "A073",
     description: "",
     additionalInfo: "",
@@ -46,10 +49,11 @@ export const test_products: ProductItem[] = [
     salesPrice: 99,
     shortDescription: "",
     categories: [
-      { slug: "tong-ho", label: "Tong Ho" },
-      { slug: "leafy-greens", label: "Leafy Greens" },
-      { slug: "cold-weather", label: "Cold Weather" },
-      { slug: "easy", label: "Easy" }
+      "tong-ho",
+      "leafy-greens",
+      "stem-vegetables",
+      "cold-weather",
+      "easy"
     ],
     sku: "A051",
     description: "",
@@ -64,10 +68,11 @@ export const test_products: ProductItem[] = [
     originalPrice: 199,
     shortDescription: "",
     categories: [
-      { slug: "tong-ho", label: "Tong Ho" },
-      { slug: "leafy-greens", label: "Leafy Greens" },
-      { slug: "cool-weather", label: "Cool Weather" },
-      { slug: "easy", label: "Easy" }
+      "tong-ho",
+      "leafy-greens",
+      "stem-vegetables",
+      "cold-weather",
+      "easy"
     ],
     sku: "A050",
     description: "",
@@ -82,12 +87,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 249,
     salesPrice: 200,
     shortDescription: "",
-    categories: [
-      { slug: "celtuce", label: "Celtuce" },
-      { slug: "stem-vegetables", label: "Stem Vegetables" },
-      { slug: "cold-weather", label: "Cold Weather" },
-      { slug: "easy", label: "Easy" }
-    ],
+    categories: ["celtuce", "stem-vegetables", "cold-weather", "easy"],
     sku: "A082",
     description: "",
     additionalInfo: "",
@@ -100,12 +100,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/celtuce-red-crispy.jpg",
     originalPrice: 199,
     shortDescription: "",
-    categories: [
-      { slug: "celtuce", label: "Celtuce" },
-      { slug: "stem-vegetables", label: "Stem Vegetables" },
-      { slug: "cool-weather", label: "Cool Weather" },
-      { slug: "very easy", label: "Very Easy" }
-    ],
+    categories: ["celtuce", "stem-vegetables", "cool-weather", "very-easy"],
     sku: "A072",
     description: "",
     additionalInfo: "",
@@ -119,12 +114,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 199,
     salesPrice: 149,
     shortDescription: "",
-    categories: [
-      { slug: "cilantro", label: "Cilantro" },
-      { slug: "flower-vegetables", label: "Flower Vegetables" },
-      { slug: "warm-weather", label: "Warm Weather" },
-      { slug: "medium", label: "Medium" }
-    ],
+    categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
     sku: "A053",
     description: "",
     additionalInfo: "",
@@ -137,12 +127,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/cilantro-fragrance-queen.jpg",
     originalPrice: 299,
     shortDescription: "",
-    categories: [
-      { slug: "cilantro", label: "Cilantro" },
-      { slug: "flower-vegetables", label: "Flower Vegetables" },
-      { slug: "hot-weather", label: "Hot Weather" },
-      { slug: "medium", label: "Medium" }
-    ],
+    categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
     sku: "A054",
     description: "",
     additionalInfo: "",
@@ -155,12 +140,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/fennel-round-bulb.jpg",
     originalPrice: 249,
     shortDescription: "",
-    categories: [
-      { slug: "fennel", label: "Fennel" },
-      { slug: "heading-vegetables", label: "Heading Vegetables" },
-      { slug: "warm-weather", label: "Warm Weather" },
-      { slug: "hard", label: "Hard" }
-    ],
+    categories: ["fennel", "heading-vegetables", "warm-weather", "hard"],
     sku: "A080",
     description: "",
     additionalInfo: "",
@@ -174,12 +154,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 299,
     salesPrice: 199,
     shortDescription: "",
-    categories: [
-      { slug: "radish", label: "Radish" },
-      { slug: "root-and-tubers", label: "Root & Tubers" },
-      { slug: "cool-weather", label: "Cool Weather" },
-      { slug: "easy", label: "Easy" }
-    ],
+    categories: ["radish", "root-and-tubers", "cold-weather", "hard"],
     sku: "A075",
     description: "",
     additionalInfo: "",
@@ -192,12 +167,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/green-onion-king-long.jpg",
     originalPrice: 199,
     shortDescription: "",
-    categories: [
-      { slug: "green-onion", label: "Green Onion" },
-      { slug: "stem-vegetables", label: "Stem Vegetables" },
-      { slug: "cold-weather", label: "Cold Weather" },
-      { slug: "easy", label: "Easy" }
-    ],
+    categories: ["green-onion", "root-and-tubers", "cold-weather", "easy"],
     sku: "A052",
     description: "",
     additionalInfo: "",
@@ -210,7 +180,7 @@ export const test_products: ProductItem[] = [
     image: "/assets/ag2t-stainless-steel-pruner.png",
     originalPrice: 5000,
     shortDescription: "",
-    categories: [{ slug: "garden-tool", label: "Gardening Tool" }],
+    categories: ["garden-tool"],
     sku: "C001",
     description: "",
     additionalInfo: "",

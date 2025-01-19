@@ -1,13 +1,24 @@
-export type NavItems = {
+type NavRootCategory = {
+  type: "nav-root";
   slug: string;
   label: string;
-  menu: Category[];
+  navIndex: number;
 };
 
-type Category = {
+type NavMenuCategory = {
+  type: "nav-menu";
+  slug: string;
+  label: string;
+  parent: string;
+};
+
+type NoneNavCategory = {
+  type: "none-nav";
   slug: string;
   label: string;
 };
+
+export type Category = NavRootCategory | NavMenuCategory | NoneNavCategory;
 
 type VegetableCategory =
   | "Tong Ho"
@@ -46,69 +57,196 @@ type DifficultyCategory =
   | "Difficult"
   | "Very Difficult";
 
-export type ProductItem = {
-  slug: string;
-  label: string;
-  image: string;
-  originalPrice: number;
-  shortDescription: string;
-  categories: Category[];
-  sku: string;
-  description: string;
-  additionalInfo: string;
-  salesPrice?: number;
-  plantingGuild?: string;
-  stockAmount?: number;
-};
-
-export const navItems: NavItems[] = [
+export const ALL_CATEGORIES: Category[] = [
   {
+    type: "nav-root",
     slug: "vegetable-seeds",
     label: "Vegetable Seeds",
-    menu: [
-      { slug: "all-vegetable-seeds", label: "All Vegetable Seeds" },
-      { slug: "tong-ho", label: "Tong Ho 茼蒿" },
-      { slug: "cucumber", label: "Cucumber 黄瓜" },
-      { slug: "green-bean", label: "Green Bean 芸豆" },
-      { slug: "long-bean", label: "Long Bean 豇豆" },
-      { slug: "celtuce", label: "Celtuce 莴笋" },
-      { slug: "lettuce", label: "Lettuce 生菜" },
-      { slug: "bok-choy", label: "Bok Choy 小青菜" },
-      { slug: "wu-choy", label: "Wu Choy 乌菜" },
-      { slug: "chives", label: "Chives Root 韭菜根" }
-    ]
+    navIndex: 0
   },
   {
-    slug: "herb-seeds",
-    label: "Herb Seeds",
-    menu: [
-      { slug: "all-herb-seeds", label: "All Herb Seeds" },
-      { slug: "chive", label: "Chive 韭菜" },
-      { slug: "green-onion", label: "Green Onion 大葱" },
-      { slug: "cilantro", label: "Cilantro 香菜" },
-      { slug: "fennel", label: "Fennel 茴香" }
-    ]
+    type: "nav-menu",
+    slug: "tong-ho",
+    label: "Tong Ho 茼蒿",
+    parent: "vegetable-seeds"
   },
   {
-    slug: "tools",
-    label: "Tools",
-    menu: [
-      { slug: "all-tools", label: "All Tools" },
-      { slug: "cookware", label: "Cookware 厨具" },
-      { slug: "garden-tool", label: "Gardening Tool 工具" }
-    ]
+    type: "nav-menu",
+    slug: "cucumber",
+    label: "Cucumber 黄瓜",
+    parent: "vegetable-seeds"
   },
   {
-    slug: "solutions",
-    label: "Shop by Solutions",
-    menu: [
-      { slug: "all-items", label: "All Items" },
-      { slug: "bean-and-peas", label: "Bean & Peas" },
-      { slug: "leafy-greens", label: "Leafy Greens 叶类" },
-      { slug: "heading-vegetables", label: "Heading Vegetables 结球" },
-      { slug: "stem-vegetables", label: "Stem Vegetables 杆类" },
-      { slug: "flower-vegetables", label: "Flower Vegetables 花类" },
-      { slug: "root-and-tubers", label: "Root & Tubers 根类" }
-    ]
+    type: "nav-menu",
+    slug: "green-bean",
+    label: "Green Bean 芸豆",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "long-bean",
+    label: "Long Bean 豇豆",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "celtuce",
+    label: "Celtuce 莴笋",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "lettuce",
+    label: "Lettuce 生菜",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "bok-choy",
+    label: "Bok Choy 小青菜",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "wu-choy",
+    label: "Wu Choy 乌菜",
+    parent: "vegetable-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "chives",
+    label: "Chives Root 韭菜根",
+    parent: "vegetable-seeds"
+  },
+  // herb below
+  { type: "nav-root", slug: "herb-seeds", label: "Herb Seeds", navIndex: 1 },
+  {
+    type: "nav-menu",
+    slug: "chive",
+    label: "Chive 韭菜",
+    parent: "herb-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "green-onion",
+    label: "Green Onion 大葱",
+    parent: "herb-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "cilantro",
+    label: "Cilantro 香菜",
+    parent: "herb-seeds"
+  },
+  {
+    type: "nav-menu",
+    slug: "fennel",
+    label: "Fennel 茴香",
+    parent: "herb-seeds"
+  },
+  // tools below
+  { type: "nav-root", slug: "tools", label: " Tools", navIndex: 2 },
+  {
+    type: "nav-menu",
+    slug: "cookware",
+    label: "Cookware 厨具",
+    parent: "tools"
+  },
+  {
+    type: "nav-menu",
+    slug: "garden-tool",
+    label: "Gardening Tool 工具",
+    parent: "tools"
+  },
+  // solutions below
+  { type: "nav-root", slug: "solutions", label: "Solutions", navIndex: 3 },
+  {
+    type: "nav-menu",
+    slug: "bean-and-peas",
+    label: "Bean & Peas",
+    parent: "solutions"
+  },
+  {
+    type: "nav-menu",
+    slug: "leafy-greens",
+    label: "Leafy Greens 叶类",
+    parent: "solutions"
+  },
+  {
+    type: "nav-menu",
+    slug: "heading-vegetables",
+    label: "Heading Vegetables 结球",
+    parent: "solutions"
+  },
+  {
+    type: "nav-menu",
+    slug: "stem-vegetables",
+    label: "Stem Vegetables 杆类",
+    parent: "solutions"
+  },
+  {
+    type: "nav-menu",
+    slug: "flower-vegetables",
+    label: "Flower Vegetables 花类",
+    parent: "solutions"
+  },
+  {
+    type: "nav-menu",
+    slug: "root-and-tubers",
+    label: "Root & Tubers 根类",
+    parent: "solutions"
+  },
+
+  // weather below
+  {
+    type: "none-nav",
+    slug: "cold-weather",
+    label: "Cold Weather"
+  },
+  {
+    type: "none-nav",
+    slug: "cool-weather",
+    label: "Cool Weather"
+  },
+  {
+    type: "none-nav",
+    slug: "mild-weather",
+    label: "Mild Weather"
+  },
+  {
+    type: "none-nav",
+    slug: "warm-weather",
+    label: "Warm Weather"
+  },
+  {
+    type: "none-nav",
+    slug: "hot-weather",
+    label: "Hot Weather"
+  },
+  // difficulty below
+  {
+    type: "none-nav",
+    slug: "very-easy",
+    label: "Very Easy"
+  },
+  {
+    type: "none-nav",
+    slug: "easy",
+    label: "Easy"
+  },
+  {
+    type: "none-nav",
+    slug: "medium",
+    label: "Medium"
+  },
+  {
+    type: "none-nav",
+    slug: "difficult",
+    label: "Difficult"
+  },
+  {
+    type: "none-nav",
+    slug: "very-difficult",
+    label: "Very Difficult"
   }
 ];

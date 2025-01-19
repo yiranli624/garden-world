@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ProductItem } from "./constants";
+import { ProductItem } from "@/components/testData";
 
 export default function ItemCard({ listItem }: { listItem: ProductItem }) {
   const originalPrice = (listItem.originalPrice / 100).toFixed(2);
