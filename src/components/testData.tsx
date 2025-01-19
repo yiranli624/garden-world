@@ -13,6 +13,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A083",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -30,6 +31,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A073",
+    onSale: true,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -47,6 +49,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A051",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -64,6 +67,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A050",
+    onSale: true,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -81,6 +85,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A082",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -98,6 +103,7 @@ export const test_products: ProductItem[] = [
       { slug: "very easy", label: "Very Easy" }
     ],
     sku: "A072",
+    onSale: true,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -115,6 +121,7 @@ export const test_products: ProductItem[] = [
       { slug: "medium", label: "Medium" }
     ],
     sku: "A053",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -132,6 +139,7 @@ export const test_products: ProductItem[] = [
       { slug: "medium", label: "Medium" }
     ],
     sku: "A054",
+    onSale: true,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -149,6 +157,7 @@ export const test_products: ProductItem[] = [
       { slug: "hard", label: "Hard" }
     ],
     sku: "A080",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -166,6 +175,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A075",
+    onSale: true,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -183,6 +193,7 @@ export const test_products: ProductItem[] = [
       { slug: "easy", label: "Easy" }
     ],
     sku: "A052",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",
@@ -196,6 +207,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: [{ slug: "garden-tool", label: "Gardening Tool" }],
     sku: "C001",
+    onSale: false,
     description: "",
     additionalInfo: "",
     plantingGuild: "",

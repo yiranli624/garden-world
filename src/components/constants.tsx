@@ -56,6 +56,7 @@ export type ProductItem = {
   sku: string;
   description: string;
   additionalInfo: string;
+  onSale: boolean;
   plantingGuild?: string;
   stockAmount?: number;
 };

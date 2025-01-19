@@ -3,7 +3,7 @@ import { ProductItem } from "../constants";
 
 export default function ItemCard({ listItem }: { listItem: ProductItem }) {
   return (
-    <div className='h-80 bg-slate-50'>
+    <div className='h-80 bg-slate-50 text-lg flex flex-col'>
       <div className='relative'>
         <Image
           src={listItem.image}
@@ -19,7 +19,20 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
           className='absolute bottom-2 right-2 cursor-pointer'
         />
       </div>
-      <p className='text-lg py-2.5 text-center'>{listItem.label}</p>
+      <div className='h-full flex flex-col text-center justify-center'>
+        <p>{listItem.label}</p>
+        <div className='flex justify-center gap-2'>
+          {listItem.onSale && (
+            <Image
+              src='/assets/sale-tag.svg'
+              alt='picture of a sale sign'
+              width={30}
+              height={30}
+            />
+          )}
+          <p className=''>${(listItem.price / 100).toFixed(2)}</p>
+        </div>
+      </div>
     </div>
   );
 }
