@@ -8,17 +8,18 @@ export default function NavigationBar({
 }: {
   allNavItems: NavItems[];
 }) {
-  const [chosenNavItemName, setChosenNavItemName] = useState(null);
+  const [chosenNavItemName, setChosenNavItemName] = useState<null | string>(
+    null
+  );
 
-  const handleVegiClick = (itemName: string) => {
+  const handleVegiClick = (event: React.MouseEvent, itemName: string) => {
+    event.stopPropagation();
     setChosenNavItemName((prev) => (prev === itemName ? null : itemName));
   };
 
   useEffect(() => {
-    const listenToNavClick = (event) => {
-      if (!event.target.id) {
-        setChosenNavItemName(null);
-      }
+    const listenToNavClick = (event: MouseEvent) => {
+      setChosenNavItemName(null);
     };
     window.addEventListener("click", listenToNavClick);
 
@@ -32,7 +33,6 @@ export default function NavigationBar({
       {allNavItems.map((navItem) => (
         <li className='cursor-pointer text-2xl' key={navItem.slug}>
           <a
-            id={navItem.slug}
             className={classNames(
               "flex h-16 items-center px-4 hover:text-emerald-800",
               {
@@ -40,7 +40,7 @@ export default function NavigationBar({
                   chosenNavItemName === navItem.slug
               }
             )}
-            onClick={() => handleVegiClick(navItem.slug)}
+            onClick={(event) => handleVegiClick(event, navItem.slug)}
           >
             {navItem.label}
           </a>

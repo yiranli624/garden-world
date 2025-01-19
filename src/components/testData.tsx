@@ -1,4 +1,4 @@
-import { ProductItem } from "../constants";
+import { ProductItem } from "./constants";
 
 export const test_products: ProductItem[] = [
   {

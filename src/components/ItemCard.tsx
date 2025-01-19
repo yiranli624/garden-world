@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ProductItem } from "../constants";
+import { ProductItem } from "./constants";
 
 export default function ItemCard({ listItem }: { listItem: ProductItem }) {
   return (
