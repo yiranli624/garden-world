@@ -2,13 +2,14 @@ import { ProductItem } from "./constants";
 
 export const test_products: ProductItem[] = [
   {
-    slug: "bok-choi-jade-star",
-    label: "Bok Choi Jade Star",
-    image: "/assets/Bok-Choi-Jade-star.jpg",
+    slug: "bok-choy-jade-star",
+    label: "Bok Choy Jade Star",
+    image: "/assets/Bok-Choy-Jade-star.jpg",
     originalPrice: 249,
     salesPrice: 149,
     shortDescription: "",
     categories: [
+      { slug: "bok-choy", label: "Bok Choy" },
       { slug: "leafy-greens", label: "Leafy Greens" },
       { slug: "cold-weather", label: "Cold Weather" },
       { slug: "easy", label: "Easy" }
@@ -20,12 +21,13 @@ export const test_products: ProductItem[] = [
     stockAmount: 110
   },
   {
-    slug: "bok-choi-dark-green",
-    label: "Bok Choi Dark Green",
-    image: "/assets/Bok-Choi-Dark-Green.jpg",
+    slug: "bok-choy-dark-green",
+    label: "Bok Choy Dark Green",
+    image: "/assets/Bok-Choy-Dark-Green.jpg",
     originalPrice: 199,
     shortDescription: "",
     categories: [
+      { slug: "bok-choy", label: "Bok Choy" },
       { slug: "leafy-greens", label: "Leafy Greens" },
       { slug: "cool-weather", label: "Cool Weather" },
       { slug: "easy", label: "Easy" }
@@ -44,6 +46,7 @@ export const test_products: ProductItem[] = [
     salesPrice: 99,
     shortDescription: "",
     categories: [
+      { slug: "tong-ho", label: "Tong Ho" },
       { slug: "leafy-greens", label: "Leafy Greens" },
       { slug: "cold-weather", label: "Cold Weather" },
       { slug: "easy", label: "Easy" }
@@ -61,6 +64,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 199,
     shortDescription: "",
     categories: [
+      { slug: "tong-ho", label: "Tong Ho" },
       { slug: "leafy-greens", label: "Leafy Greens" },
       { slug: "cool-weather", label: "Cool Weather" },
       { slug: "easy", label: "Easy" }
@@ -79,6 +83,7 @@ export const test_products: ProductItem[] = [
     salesPrice: 200,
     shortDescription: "",
     categories: [
+      { slug: "celtuce", label: "Celtuce" },
       { slug: "stem-vegetables", label: "Stem Vegetables" },
       { slug: "cold-weather", label: "Cold Weather" },
       { slug: "easy", label: "Easy" }
@@ -96,6 +101,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 199,
     shortDescription: "",
     categories: [
+      { slug: "celtuce", label: "Celtuce" },
       { slug: "stem-vegetables", label: "Stem Vegetables" },
       { slug: "cool-weather", label: "Cool Weather" },
       { slug: "very easy", label: "Very Easy" }
@@ -114,6 +120,7 @@ export const test_products: ProductItem[] = [
     salesPrice: 149,
     shortDescription: "",
     categories: [
+      { slug: "cilantro", label: "Cilantro" },
       { slug: "flower-vegetables", label: "Flower Vegetables" },
       { slug: "warm-weather", label: "Warm Weather" },
       { slug: "medium", label: "Medium" }
@@ -131,6 +138,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 299,
     shortDescription: "",
     categories: [
+      { slug: "cilantro", label: "Cilantro" },
       { slug: "flower-vegetables", label: "Flower Vegetables" },
       { slug: "hot-weather", label: "Hot Weather" },
       { slug: "medium", label: "Medium" }
@@ -148,6 +156,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 249,
     shortDescription: "",
     categories: [
+      { slug: "fennel", label: "Fennel" },
       { slug: "heading-vegetables", label: "Heading Vegetables" },
       { slug: "warm-weather", label: "Warm Weather" },
       { slug: "hard", label: "Hard" }
@@ -166,6 +175,7 @@ export const test_products: ProductItem[] = [
     salesPrice: 199,
     shortDescription: "",
     categories: [
+      { slug: "radish", label: "Radish" },
       { slug: "root-and-tubers", label: "Root & Tubers" },
       { slug: "cool-weather", label: "Cool Weather" },
       { slug: "easy", label: "Easy" }
@@ -183,6 +193,7 @@ export const test_products: ProductItem[] = [
     originalPrice: 199,
     shortDescription: "",
     categories: [
+      { slug: "green-onion", label: "Green Onion" },
       { slug: "stem-vegetables", label: "Stem Vegetables" },
       { slug: "cold-weather", label: "Cold Weather" },
       { slug: "easy", label: "Easy" }

@@ -2,6 +2,7 @@
 import classNames from "classnames";
 import React, { useState, useEffect } from "react";
 import { NavItems } from "./constants";
+import Link from "next/link";
 
 export default function NavigationBar({
   allNavItems
@@ -12,7 +13,7 @@ export default function NavigationBar({
     null
   );
 
-  const handleVegiClick = (event: React.MouseEvent, itemName: string) => {
+  const handleNavItemClick = (event: React.MouseEvent, itemName: string) => {
     event.stopPropagation();
     setChosenNavItemName((prev) => (prev === itemName ? null : itemName));
   };
@@ -40,7 +41,7 @@ export default function NavigationBar({
                   chosenNavItemName === navItem.slug
               }
             )}
-            onClick={(event) => handleVegiClick(event, navItem.slug)}
+            onClick={(event) => handleNavItemClick(event, navItem.slug)}
           >
             {navItem.label}
           </a>
@@ -56,10 +57,14 @@ export default function NavigationBar({
           >
             {navItem.menu
               .sort((a, b) => a.label.localeCompare(b.label))
-              .map((seed) => (
-                <a key={seed.slug} className='divide-x'>
-                  {seed.label}
-                </a>
+              .map((menuItem) => (
+                <Link
+                  key={menuItem.slug}
+                  className='divide-x'
+                  href={`/${menuItem.slug}`}
+                >
+                  {menuItem.label}
+                </Link>
               ))}
           </div>
         </li>
