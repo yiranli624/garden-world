@@ -50,13 +50,13 @@ export type ProductItem = {
   slug: string;
   label: string;
   image: string;
-  price: number;
+  originalPrice: number;
   shortDescription: string;
   categories: Category[];
   sku: string;
   description: string;
   additionalInfo: string;
-  onSale: boolean;
+  salesPrice?: number;
   plantingGuild?: string;
   stockAmount?: number;
 };
@@ -67,15 +67,15 @@ export const navItems: NavItems[] = [
     label: "Vegetable Seeds",
     menu: [
       { slug: "all-vegetable-seeds", label: "All Vegetable Seeds" },
-      { slug: "tong-ho", label: "Tong Ho" },
-      { slug: "cucumber", label: "Cucumber" },
-      { slug: "green-bean", label: "Green Bean" },
-      { slug: "long-bean", label: "Long Bean" },
-      { slug: "celtuce", label: "Celtuce" },
-      { slug: "lettuce", label: "Lettuce" },
-      { slug: "bok-choy", label: "Bok Choy" },
-      { slug: "wu-choy", label: "Wu Choy" },
-      { slug: "chives", label: "Chives Root" }
+      { slug: "tong-ho", label: "Tong Ho 茼蒿" },
+      { slug: "cucumber", label: "Cucumber 黄瓜" },
+      { slug: "green-bean", label: "Green Bean 芸豆" },
+      { slug: "long-bean", label: "Long Bean 豇豆" },
+      { slug: "celtuce", label: "Celtuce 莴笋" },
+      { slug: "lettuce", label: "Lettuce 生菜" },
+      { slug: "bok-choy", label: "Bok Choy 小青菜" },
+      { slug: "wu-choy", label: "Wu Choy 乌菜" },
+      { slug: "chives", label: "Chives Root 韭菜根" }
     ]
   },
   {
@@ -83,10 +83,10 @@ export const navItems: NavItems[] = [
     label: "Herb Seeds",
     menu: [
       { slug: "all-herb-seeds", label: "All Herb Seeds" },
-      { slug: "chive", label: "Chive" },
-      { slug: "green-onion", label: "Green Onion" },
-      { slug: "cilantro", label: "Cilantro" },
-      { slug: "fennel", label: "Fennel" }
+      { slug: "chive", label: "Chive 韭菜" },
+      { slug: "green-onion", label: "Green Onion 大葱" },
+      { slug: "cilantro", label: "Cilantro 香菜" },
+      { slug: "fennel", label: "Fennel 茴香" }
     ]
   },
   {
@@ -94,8 +94,8 @@ export const navItems: NavItems[] = [
     label: "Tools",
     menu: [
       { slug: "all-tools", label: "All Tools" },
-      { slug: "cookware", label: "Cookware" },
-      { slug: "garden-tool", label: "Gardening Tool" }
+      { slug: "cookware", label: "Cookware 厨具" },
+      { slug: "garden-tool", label: "Gardening Tool 工具" }
     ]
   },
   {
@@ -104,11 +104,11 @@ export const navItems: NavItems[] = [
     menu: [
       { slug: "all-items", label: "All Items" },
       { slug: "bean-and-peas", label: "Bean & Peas" },
-      { slug: "leafy-greens", label: "Leafy Greens" },
-      { slug: "heading-vegetables", label: "Heading Vegetables" },
-      { slug: "stem-vegetables", label: "Stem Vegetables" },
-      { slug: "flower-vegetables", label: "Flower Vegetables" },
-      { slug: "root-and-tubers", label: "Root & Tubers" }
+      { slug: "leafy-greens", label: "Leafy Greens 叶类" },
+      { slug: "heading-vegetables", label: "Heading Vegetables 结球" },
+      { slug: "stem-vegetables", label: "Stem Vegetables 杆类" },
+      { slug: "flower-vegetables", label: "Flower Vegetables 花类" },
+      { slug: "root-and-tubers", label: "Root & Tubers 根类" }
     ]
   }
 ];

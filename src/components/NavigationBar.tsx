@@ -47,7 +47,7 @@ export default function NavigationBar({
           <div
             // bg-[linear-gradient(to_left,#8077d0_0px,transparent_1px,transparent_100%)] bg-[length:calc(100%/3)]
             className={classNames(
-              "absolute bg-slate-100 border border-slate-300 z-10 rounded-b text-base font-light p-4 gap-x-8 grid-cols-[repeat(3,max-content)]",
+              "absolute bg-slate-100 border border-slate-300 z-10 rounded-b text-base font-light p-4 gap-x-8 grid-cols-[repeat(2,max-content)]",
               {
                 grid: chosenNavItemName === navItem.slug,
                 hidden: chosenNavItemName !== navItem.slug
