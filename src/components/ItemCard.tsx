@@ -3,10 +3,10 @@ import { ProductItem } from "@/components/testData";
 import Link from "next/link";
 
 export default function ItemCard({ listItem }: { listItem: ProductItem }) {
-  const originalPrice = (listItem.originalPrice / 100).toFixed(2);
-  const currentPrice = listItem.salesPrice
-    ? (listItem.salesPrice / 100).toFixed(2)
-    : (listItem.originalPrice / 100).toFixed(2);
+  const originalPrice = (listItem.price.originalPrice / 100).toFixed(2);
+  const currentPrice = listItem.price.salesPrice
+    ? (listItem.price.salesPrice / 100).toFixed(2)
+    : (listItem.price.originalPrice / 100).toFixed(2);
 
   return (
     <Link
@@ -31,7 +31,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
       <div className='h-full flex flex-col justify-center'>
         <p className='text-center'>{listItem.label}</p>
         <div className='flex justify-center gap-2 text-md'>
-          {listItem.salesPrice && (
+          {listItem.price.salesPrice && (
             <Image
               src='/assets/sale-tag.svg'
               alt='picture of a sale sign'
@@ -39,7 +39,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
               height={30}
             />
           )}
-          {listItem.salesPrice && (
+          {listItem.price.salesPrice && (
             <p className='line-through text-slate-500'>${originalPrice}</p>
           )}
           <p className='font-bold'>${currentPrice}</p>

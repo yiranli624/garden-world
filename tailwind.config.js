@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       fontSize: {
         md: '0.925rem'
+      },
+      colors: {
+        olive: '#e9f2d0'
       }
     }
   },
