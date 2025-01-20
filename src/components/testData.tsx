@@ -6,10 +6,11 @@ export type ProductItem = {
   shortDescription: string;
   categories: string[];
   sku: string;
-  description: string;
+  englishDescription: string;
+  plantingGuild: string;
+  chineseDescription?: string;
   additionalInfo: string;
   salesPrice?: number;
-  plantingGuild?: string;
   stockAmount?: number;
 };
 
@@ -23,9 +24,12 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["bok-choy", "leafy-greens", "cold-weather", "easy"],
     sku: "A083",
-    description: "",
+    englishDescription:
+      "This Bok Choy grows upright. Plant is about 22cm tall, 35 cm wide. Leaf is dark green round shape, thick, smooth with short spoon shape petioles. Early maturing and productive. It can tolerant to cold weather and some hot weather. ",
+    chineseDescription:
+      "植株直立，叶柄与地面略成直角。株高22厘米，开展度35厘米。中横径12厘米。叶片深绿色，15-17片，椭圆形或近圆形，长21厘米，宽18厘米，肥厚，平滑，全缘，基部无裂片。叶柄短，叶柄基部宽5厘米，上部宽1.9厘米，厚1.6厘米。叶柄基部肥厚，向内弯曲如匙，上部扁平，绿色，叶脉突出明显。早熟，丰产，品质优良。适应性强，较耐热、耐寒。",
     additionalInfo: "",
-    plantingGuild: "",
+    plantingGuild: "/assets/bok-choy-jade-star-planting.jpg",
     stockAmount: 110
   },
   {
@@ -36,7 +40,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["bok-choy", "leafy-greens", "cool-weather", "easy"],
     sku: "A073",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 149
@@ -56,7 +60,7 @@ export const test_products: ProductItem[] = [
       "easy"
     ],
     sku: "A051",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 73
@@ -75,7 +79,7 @@ export const test_products: ProductItem[] = [
       "easy"
     ],
     sku: "A050",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 56
@@ -89,7 +93,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["celtuce", "stem-vegetables", "cold-weather", "easy"],
     sku: "A082",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 90
@@ -102,7 +106,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["celtuce", "stem-vegetables", "cool-weather", "very-easy"],
     sku: "A072",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 49
@@ -116,7 +120,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
     sku: "A053",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 73
@@ -129,7 +133,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
     sku: "A054",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 56
@@ -142,7 +146,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["fennel", "heading-vegetables", "warm-weather", "hard"],
     sku: "A080",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 10
@@ -156,7 +160,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["radish", "root-and-tubers", "cold-weather", "hard"],
     sku: "A075",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 39
@@ -169,7 +173,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["green-onion", "root-and-tubers", "cold-weather", "easy"],
     sku: "A052",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 173
@@ -182,7 +186,7 @@ export const test_products: ProductItem[] = [
     shortDescription: "",
     categories: ["garden-tool"],
     sku: "C001",
-    description: "",
+    englishDescription: "",
     additionalInfo: "",
     plantingGuild: "",
     stockAmount: 26

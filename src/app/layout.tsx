@@ -58,7 +58,7 @@ export default function RootLayout({
           <div className='w-1/3'>My Garden world</div>
           <SearchBar />
         </header>
-        <nav className='border-dotted border-y-2 border-emerald-900'>
+        <nav className='border-dotted border-y-2 border-lime-700'>
           <NavigationBar allNavItems={generateNavItems()} />
         </nav>
 

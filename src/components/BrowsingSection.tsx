@@ -8,8 +8,8 @@ export default function BrowsingSection({
 }) {
   return (
     <div className='flex gap-10'>
-      <div className='w-1/5 border-2 border-blue-700'>Left pannel</div>
-      <div className='grow grid grid-cols-4 gap-10'>
+      <div className='flex-1 border-2 border-blue-700'>Left pannel</div>
+      <div className='flex-[6_6_0%] grid grid-cols-4 gap-10'>
         {listItems
           .sort((a, b) => a.label.localeCompare(b.label))
           .map((listItem, ind) => (

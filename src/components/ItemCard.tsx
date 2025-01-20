@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ProductItem } from "@/components/testData";
+import Link from "next/link";
 
 export default function ItemCard({ listItem }: { listItem: ProductItem }) {
   const originalPrice = (listItem.originalPrice / 100).toFixed(2);
@@ -8,7 +9,10 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
     : (listItem.originalPrice / 100).toFixed(2);
 
   return (
-    <div className='h-80 bg-slate-50 text-lg flex flex-col'>
+    <Link
+      className='h-80 bg-slate-50 text-lg flex flex-col cursor-pointer'
+      href={`/products/${listItem.slug}`}
+    >
       <div className='relative'>
         <Image
           src={listItem.image}
@@ -21,7 +25,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
           alt='picture of a shopping cart'
           width={45}
           height={45}
-          className='absolute bottom-2 right-2 cursor-pointer'
+          className='absolute bottom-2 right-2 cursor-pointer hover:border-2 border-stone-900 rounded-full'
         />
       </div>
       <div className='h-full flex flex-col justify-center'>
@@ -41,6 +45,6 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
           <p className='font-bold'>${currentPrice}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
