@@ -53,11 +53,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='font-serif'>
-        <div className="h-60 bg-[url('/assets/banner-3.png')] bg-no-repeat bg-cover bg-center"></div>
         <header className='flex px-10 py-10'>
           <div className='w-1/3'>My Garden world</div>
           <SearchBar />
         </header>
+        <div className="h-60 bg-[url('/assets/banner-3.png')] bg-no-repeat bg-cover bg-center"></div>
         <nav className='border-dotted border-y-2 border-lime-700'>
           <NavigationBar allNavItems={generateNavItems()} />
         </nav>
