@@ -16,7 +16,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
     >
       <div className='relative'>
         <Image
-          src={listItem.image}
+          src={listItem.imagesUrls[0]}
           alt='picture of the selling item'
           width={384}
           height={384}

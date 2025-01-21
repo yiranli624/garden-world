@@ -1,7 +1,7 @@
 export type ProductItem = {
   slug: string;
   label: string;
-  image: string;
+  imagesUrls: string[];
   price: { originalPrice: number; salesPrice?: number };
   categories: string[];
   sku: string;
@@ -18,7 +18,10 @@ export const test_products: ProductItem[] = [
   {
     slug: "bok-choy-jade-star",
     label: "Bok Choy Jade Star",
-    image: "/assets/Bok-Choy-Jade-star.jpg",
+    imagesUrls: [
+      "/assets/Bok-Choy-Jade-star.jpg",
+      "/assets/Bok-Choy-Dark-Green.jpg"
+    ],
     price: {
       originalPrice: 249,
       salesPrice: 149
@@ -41,7 +44,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "bok-choy-dark-green",
     label: "Bok Choy Dark Green",
-    image: "/assets/Bok-Choy-Dark-Green.jpg",
+    imagesUrls: ["/assets/Bok-Choy-Dark-Green.jpg"],
     price: {
       originalPrice: 199
     },
@@ -55,7 +58,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "tong-ho-crispy-stem",
     label: "Tongho Crispy Stem",
-    image: "/assets/Tongho-Crispy-Stem.jpg",
+    imagesUrls: ["/assets/Tongho-Crispy-Stem.jpg"],
     price: {
       originalPrice: 199,
       salesPrice: 99
@@ -76,7 +79,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "tong-ho-serrated-leaf",
     label: "Tongho Serrated Leaf",
-    image: "/assets/Tongho-Serrated-Leaf.jpg",
+    imagesUrls: ["/assets/Tongho-Serrated-Leaf.jpg"],
     price: {
       originalPrice: 199
     },
@@ -96,7 +99,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "celtuce-big-head",
     label: "Celtuce Big Head",
-    image: "/assets/celtuce-big-head.jpg",
+    imagesUrls: ["/assets/celtuce-big-head.jpg"],
     price: {
       originalPrice: 249,
       salesPrice: 200
@@ -111,7 +114,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "celtuce-red-crispy",
     label: "Celtuce Red Crispy",
-    image: "/assets/celtuce-red-crispy.jpg",
+    imagesUrls: ["/assets/celtuce-red-crispy.jpg"],
     price: {
       originalPrice: 199
     },
@@ -125,7 +128,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "cilantro-broad-leaf",
     label: "Cilantro Broad Leaf",
-    image: "/assets/cilantro-broad-leaf.jpg",
+    imagesUrls: ["/assets/cilantro-broad-leaf.jpg"],
     price: {
       originalPrice: 199,
       salesPrice: 149
@@ -140,7 +143,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "cilantro-fragrance-queen",
     label: "Cilantro Fragrance Queen",
-    image: "/assets/cilantro-fragrance-queen.jpg",
+    imagesUrls: ["/assets/cilantro-fragrance-queen.jpg"],
     price: {
       originalPrice: 299
     },
@@ -154,7 +157,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "fennel-round-bulb",
     label: "Fennel Round Bulb",
-    image: "/assets/fennel-round-bulb.jpg",
+    imagesUrls: ["/assets/fennel-round-bulb.jpg"],
     price: {
       originalPrice: 249
     },
@@ -168,7 +171,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "radish-red-lady",
     label: "Radish Red Lady",
-    image: "/assets/radish-red-lady.jpg",
+    imagesUrls: ["/assets/radish-red-lady.jpg"],
     price: {
       originalPrice: 299,
       salesPrice: 199
@@ -183,7 +186,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "green-onion-king-long",
     label: "Green Onion King Long",
-    image: "/assets/green-onion-king-long.jpg",
+    imagesUrls: ["/assets/green-onion-king-long.jpg"],
     price: {
       originalPrice: 199
     },
@@ -197,7 +200,7 @@ export const test_products: ProductItem[] = [
   {
     slug: "ag2t-pruner",
     label: "AG2T Stainless Steel Pruner",
-    image: "/assets/ag2t-stainless-steel-pruner.png",
+    imagesUrls: ["/assets/ag2t-stainless-steel-pruner.png"],
     price: {
       originalPrice: 5000
     },
