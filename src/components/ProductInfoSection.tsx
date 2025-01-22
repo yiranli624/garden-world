@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import classNames from "classnames";
 import { ProductItem } from "./testData";
+import { ALL_CATEGORIES } from "./constants";
 
 export default function ProductInfoSection({
   product
@@ -17,6 +18,7 @@ export default function ProductInfoSection({
     ? (product.price.salesPrice / 100).toFixed(2)
     : (product.price.originalPrice / 100).toFixed(2);
   const isInStock = product.stockAmount > 0;
+  const collectionsWithCategory = [product.category, ...product.collections];
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const numericInput = Number(event.target.value);
@@ -108,22 +110,31 @@ export default function ProductInfoSection({
         ))}
       </div>
 
-      <div className='flex gap-2 text-base'>
-        <p>Features: </p>
-        <ul className='flex gap-2'>
-          {product.categories.map((category, ind) => (
-            <li
+      <div className='text-base'>
+        <p className=''>Collections: </p>
+        <ul className='grid grid-cols-3 gap-2'>
+          {collectionsWithCategory.map((collection, ind) => (
+            <Link
               key={ind}
-              className='flex items-center cursor-pointer text-lime-700 hover:scale-110 hover:text-slate-700'
+              href={`/collections/${collection}`}
+              className='flex items-center p-1 cursor-pointer text-lime-700 hover:bg-olive'
             >
+              {/* hover:scale-110 hover:text-slate-700 
+              hover:shadow-lg hover:bg-lime-700 hover:text-white hover:rounded */}
               <Image
                 src={"/assets/lightbulb.svg"}
                 alt='picture of light bulb'
                 width={45}
                 height={45}
               />
-              <Link href={`/collections/${category}`}>{category}</Link>
-            </li>
+              <p className='text-sm'>
+                {
+                  ALL_CATEGORIES.find(
+                    (categoryMenu) => categoryMenu.slug === collection
+                  )?.label
+                }
+              </p>
+            </Link>
           ))}
         </ul>
       </div>

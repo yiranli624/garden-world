@@ -1,4 +1,5 @@
 import {
+  NavBreadCrumbs,
   PicturesDisplaySection,
   ProductInfoSection,
   ProductTabsSection
@@ -21,7 +22,8 @@ export default async function ProductPage({
   }
 
   return (
-    <main className='mx-36 p-9'>
+    <main className='mx-32 p-9'>
+      <NavBreadCrumbs product={chosenProduct} />
       <div className='flex gap-10 mb-10'>
         <PicturesDisplaySection imagesUrls={chosenProduct.imagesUrls} />
         <ProductInfoSection product={chosenProduct} />

@@ -9,9 +9,8 @@ export default function ProductTabsSection({
 }: {
   product: ProductItem;
 }) {
-  const isToolProduct = product.categories.some((category) =>
-    category.includes("tool")
-  );
+  const isToolProduct = product.category.includes("tool");
+
   const tabs = isToolProduct
     ? ["INSTRUCTION", "ADDITIONAL INFORMATION"]
     : ["PLANTING INFORMATION", "ADDITIONAL INFORMATION"];
@@ -52,6 +51,13 @@ export default function ProductTabsSection({
             width={385}
             height={490}
           />
+
+          // <p>
+          //   {product.englishDescription} {product.chineseDescription}
+          //   {product.englishDescription} {product.chineseDescription}
+          //   {product.englishDescription} {product.chineseDescription}
+          //   {product.englishDescription} {product.chineseDescription}
+          // </p>
         )}
         {chosenTab === 1 && <p>{product.additionalInfo}</p>}
       </div>

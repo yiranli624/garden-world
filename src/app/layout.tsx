@@ -24,9 +24,9 @@ export default function RootLayout({
             navIndex: category.navIndex,
             menu: [
               {
-                slug: category.slug === "solutions" ? "/" : category.slug,
+                slug: category.slug === "collections" ? "/" : category.slug,
                 label: `All ${
-                  category.slug === "solutions" ? "Items" : category.label
+                  category.slug === "collections" ? "Items" : category.label
                 }`
               }
             ]

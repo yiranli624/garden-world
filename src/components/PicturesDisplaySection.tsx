@@ -33,7 +33,7 @@ export default function PicturesDisplaySection({
               width={88}
               height={88}
               className={classNames({
-                "border-2 border-stone-700": chosenImage === ind,
+                "border-2 border-stone-700 opacity-70": chosenImage === ind,
                 "border-2 border-slate-200": chosenImage !== ind
               })}
             />

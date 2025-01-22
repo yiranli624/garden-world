@@ -158,43 +158,43 @@ export const ALL_CATEGORIES: Category[] = [
     label: "Gardening Tool 工具",
     parent: "tools"
   },
-  // solutions below
-  { type: "nav-root", slug: "solutions", label: "Solutions", navIndex: 3 },
+  // collections below
+  { type: "nav-root", slug: "collections", label: "Collections", navIndex: 3 },
   {
     type: "nav-menu",
     slug: "bean-and-peas",
     label: "Bean & Peas",
-    parent: "solutions"
+    parent: "collections"
   },
   {
     type: "nav-menu",
     slug: "leafy-greens",
     label: "Leafy Greens 叶类",
-    parent: "solutions"
+    parent: "collections"
   },
   {
     type: "nav-menu",
     slug: "heading-vegetables",
     label: "Heading Vegetables 结球",
-    parent: "solutions"
+    parent: "collections"
   },
   {
     type: "nav-menu",
     slug: "stem-vegetables",
     label: "Stem Vegetables 杆类",
-    parent: "solutions"
+    parent: "collections"
   },
   {
     type: "nav-menu",
     slug: "flower-vegetables",
     label: "Flower Vegetables 花类",
-    parent: "solutions"
+    parent: "collections"
   },
   {
     type: "nav-menu",
     slug: "root-and-tubers",
     label: "Root & Tubers 根类",
-    parent: "solutions"
+    parent: "collections"
   },
 
   // weather below
@@ -227,12 +227,12 @@ export const ALL_CATEGORIES: Category[] = [
   {
     type: "none-nav",
     slug: "very-easy",
-    label: "Very Easy"
+    label: "Very Easy 非常容易"
   },
   {
     type: "none-nav",
     slug: "easy",
-    label: "Easy"
+    label: "Easy 容易"
   },
   {
     type: "none-nav",

@@ -12,13 +12,13 @@ export default async function CategoryPage({
   const filteredItems = test_products.filter((product) => {
     return (
       // when param is a menu
-      // are product categories include the param
-      product.categories.includes(categorySlug) ||
+      // is product category matching the param
+      product.category === categorySlug ||
       // when param is a root
-      // In flat category, if you are included in product category, is your parent matching param
+      // In flat category, if you are included in product collections, is your parent matching param
       ALL_CATEGORIES.some(
         (eachCategory) =>
-          product.categories.includes(eachCategory.slug) &&
+          product.category === eachCategory.slug &&
           eachCategory.type === "nav-menu" &&
           eachCategory.parent === categorySlug
       )

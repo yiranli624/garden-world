@@ -3,7 +3,8 @@ export type ProductItem = {
   label: string;
   imagesUrls: string[];
   price: { originalPrice: number; salesPrice?: number };
-  categories: string[];
+  category: string;
+  collections: string[];
   sku: string;
   englishDescription: string;
   chineseDescription?: string;
@@ -26,7 +27,14 @@ export const test_products: ProductItem[] = [
       originalPrice: 249,
       salesPrice: 149
     },
-    categories: ["bok-choy", "leafy-greens", "cold-weather", "easy"],
+    category: "bok-choy",
+    collections: [
+      "leafy-greens",
+      "easy",
+      "cold-weather",
+      "cool-weather",
+      "very-easy"
+    ],
     sku: "A083",
     englishDescription:
       "This Bok Choy grows upright. Plant is about 22cm tall, 35 cm wide. Leaf is dark green round shape, thick, smooth with short spoon shape petioles. Early maturing and productive. It can tolerant to cold weather and some hot weather. ",
@@ -48,7 +56,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 199
     },
-    categories: ["bok-choy", "leafy-greens", "cool-weather", "easy"],
+    category: "bok-choy",
+    collections: ["leafy-greens", "cool-weather", "easy"],
     sku: "A073",
     englishDescription: "",
     additionalInfo: "",
@@ -63,13 +72,8 @@ export const test_products: ProductItem[] = [
       originalPrice: 199,
       salesPrice: 99
     },
-    categories: [
-      "tong-ho",
-      "leafy-greens",
-      "stem-vegetables",
-      "cold-weather",
-      "easy"
-    ],
+    category: "tong-ho",
+    collections: ["leafy-greens", "stem-vegetables", "cold-weather", "easy"],
     sku: "A051",
     englishDescription: "",
     additionalInfo: "",
@@ -83,13 +87,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 199
     },
-    categories: [
-      "tong-ho",
-      "leafy-greens",
-      "stem-vegetables",
-      "cold-weather",
-      "easy"
-    ],
+    category: "tong-ho",
+    collections: ["leafy-greens", "stem-vegetables", "cold-weather", "easy"],
     sku: "A050",
     englishDescription: "",
     additionalInfo: "",
@@ -104,7 +103,8 @@ export const test_products: ProductItem[] = [
       originalPrice: 249,
       salesPrice: 200
     },
-    categories: ["celtuce", "stem-vegetables", "cold-weather", "easy"],
+    category: "celtuce",
+    collections: ["stem-vegetables", "cold-weather", "easy"],
     sku: "A082",
     englishDescription: "",
     additionalInfo: "",
@@ -118,7 +118,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 199
     },
-    categories: ["celtuce", "stem-vegetables", "cool-weather", "very-easy"],
+    category: "celtuce",
+    collections: ["stem-vegetables", "cool-weather", "very-easy"],
     sku: "A072",
     englishDescription: "",
     additionalInfo: "",
@@ -133,7 +134,8 @@ export const test_products: ProductItem[] = [
       originalPrice: 199,
       salesPrice: 149
     },
-    categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
+    category: "cilantro",
+    collections: ["flower-vegetables", "warm-weather", "medium"],
     sku: "A053",
     englishDescription: "",
     additionalInfo: "",
@@ -147,7 +149,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 299
     },
-    categories: ["cilantro", "flower-vegetables", "warm-weather", "medium"],
+    category: "cilantro",
+    collections: ["flower-vegetables", "warm-weather", "medium"],
     sku: "A054",
     englishDescription: "",
     additionalInfo: "",
@@ -161,7 +164,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 249
     },
-    categories: ["fennel", "heading-vegetables", "warm-weather", "hard"],
+    category: "fennel",
+    collections: ["heading-vegetables", "warm-weather", "hard"],
     sku: "A080",
     englishDescription: "",
     additionalInfo: "",
@@ -176,7 +180,8 @@ export const test_products: ProductItem[] = [
       originalPrice: 299,
       salesPrice: 199
     },
-    categories: ["radish", "root-and-tubers", "cold-weather", "hard"],
+    category: "radish",
+    collections: ["root-and-tubers", "cold-weather", "hard"],
     sku: "A075",
     englishDescription: "",
     additionalInfo: "",
@@ -190,7 +195,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 199
     },
-    categories: ["green-onion", "root-and-tubers", "cold-weather", "easy"],
+    category: "green-onion",
+    collections: ["root-and-tubers", "cold-weather", "easy"],
     sku: "A052",
     englishDescription: "",
     additionalInfo: "",
@@ -204,7 +210,8 @@ export const test_products: ProductItem[] = [
     price: {
       originalPrice: 5000
     },
-    categories: ["garden-tool"],
+    category: "garden-tool",
+    collections: [],
     sku: "C001",
     englishDescription: "",
     additionalInfo: "",
