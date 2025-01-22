@@ -19,7 +19,7 @@ export default function ProductTabsSection({
   const [chosenTab, setChosenTab] = useState(0);
 
   return (
-    <div>
+    <div className='w-full h-full'>
       <ul className='flex text-base gap-1'>
         {tabs.map((tabName, index) => (
           <li
@@ -50,7 +50,7 @@ export default function ProductTabsSection({
             src={product.plantingGuild}
             alt='picture of planting guildence of the product'
             width={385}
-            height={385}
+            height={490}
           />
         )}
         {chosenTab === 1 && <p>{product.additionalInfo}</p>}

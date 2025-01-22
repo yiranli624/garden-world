@@ -61,7 +61,7 @@ export default function NavigationBar({
                 <Link
                   key={menuItem.slug}
                   className='divide-x'
-                  href={`/${menuItem.slug}`}
+                  href={`/collections/${menuItem.slug}`}
                 >
                   {menuItem.label}
                 </Link>

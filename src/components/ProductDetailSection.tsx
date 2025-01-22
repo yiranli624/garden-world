@@ -16,7 +16,7 @@ function ProductDetailSection({ product }: { product: ProductItem }) {
   return (
     <div className=''>
       <div className='flex gap-10 mb-10'>
-        <PicturesDisplaySection imgUrl={product.image} />
+        <PicturesDisplaySection imagesUrls={product.imagesUrls} />
         <ProductInfoSection product={product} />
       </div>
       <ProductTabsSection product={product} />

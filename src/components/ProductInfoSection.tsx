@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { ProductItem } from "./testData";
-import classNames from "classnames";
+import Link from "next/link";
 import { useState } from "react";
+import classNames from "classnames";
+import { ProductItem } from "./testData";
 
 export default function ProductInfoSection({
   product
@@ -46,7 +47,7 @@ export default function ProductInfoSection({
 
       <div className='flex flex-col gap-2'>
         <label>Quantity</label>
-        <div className='flex w-1/4 h-10 border border-slate-400'>
+        <div className='flex w-1/5 h-10 border border-slate-400'>
           <button
             className={classNames("w-1/3 flex justify-center items-center", {
               "hover:cursor-pointer": quantity > 1,
@@ -90,7 +91,7 @@ export default function ProductInfoSection({
         </div>
         <button
           className={classNames(
-            "h-10 w-full bg-lime-700 rounded text-white text-lg",
+            "h-12 w-full bg-lime-700 rounded text-white text-lg",
             {
               "cursor-not-allowed": !isInStock
             }
@@ -113,7 +114,7 @@ export default function ProductInfoSection({
           {product.categories.map((category, ind) => (
             <li
               key={ind}
-              className='cursor-pointer flex items-center hover:scale-110'
+              className='flex items-center cursor-pointer text-lime-700 hover:scale-110 hover:text-slate-700'
             >
               <Image
                 src={"/assets/lightbulb.svg"}
@@ -121,7 +122,7 @@ export default function ProductInfoSection({
                 width={45}
                 height={45}
               />
-              <a>{category}</a>
+              <Link href={`/collections/${category}`}>{category}</Link>
             </li>
           ))}
         </ul>

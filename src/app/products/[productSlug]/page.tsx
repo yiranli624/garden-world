@@ -21,17 +21,12 @@ export default async function ProductPage({
   }
 
   return (
-    <main className='p-10'>
-      <div className='flex gap-10'>
-        <div className='flex-1 border-2 border-blue-700'>Left pannel</div>
-        <div className='flex-[6_6_0%]'>
-          <div className='flex gap-10 mb-10'>
-            <PicturesDisplaySection imagesUrls={chosenProduct.imagesUrls} />
-            <ProductInfoSection product={chosenProduct} />
-          </div>
-          <ProductTabsSection product={chosenProduct} />
-        </div>
+    <main className='mx-36 p-9'>
+      <div className='flex gap-10 mb-10'>
+        <PicturesDisplaySection imagesUrls={chosenProduct.imagesUrls} />
+        <ProductInfoSection product={chosenProduct} />
       </div>
+      <ProductTabsSection product={chosenProduct} />
     </main>
   );
 }
