@@ -5,3 +5,5 @@ export { default as ItemCard } from "./ItemCard";
 export { default as PicturesDisplaySection } from "./PicturesDisplaySection";
 export { default as ProductInfoSection } from "./ProductInfoSection";
 export { default as ProductTabsSection } from "./ProductTabsSection";
+export { default as NavBreadCrumbs } from "./NavBreadCrumbs";
+export { default as FiltersSection } from "./FiltersSection";

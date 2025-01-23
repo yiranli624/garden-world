@@ -1,5 +1,5 @@
 import { ProductItem } from "@/components/testData";
-import { ItemCard } from "./";
+import { FiltersSection, ItemCard } from "./";
 
 export default function BrowsingSection({
   listItems
@@ -8,7 +8,7 @@ export default function BrowsingSection({
 }) {
   return (
     <div className='flex gap-10'>
-      <div className='flex-1 border-2 border-blue-700'>Left pannel</div>
+      <FiltersSection />
       <div className='flex-[6_6_0%] grid grid-cols-4 gap-10'>
         {listItems
           .sort((a, b) => a.label.localeCompare(b.label))

@@ -14,7 +14,8 @@ module.exports = {
         md: '0.925rem'
       },
       colors: {
-        olive: '#e9f2d0'
+        olive: '#e9f2d0',
+        beige: '#f5f3ed'
       }
     }
   },
