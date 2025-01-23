@@ -50,6 +50,7 @@ export default function ProductTabsSection({
             alt='picture of planting guildence of the product'
             width={385}
             height={490}
+            style={{ width: "auto" }}
           />
 
           // <p>

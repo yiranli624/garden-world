@@ -1,4 +1,6 @@
 "use client";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 const WEATHER_OPTIONS = [
   { name: "cold-weather", label: "Cold Weather" },
@@ -15,7 +17,48 @@ const DIFFICULTY_OPTIONS = [
   { name: "very-difficult", label: "Very Difficult" }
 ];
 
+// const getCheckboxes = (options: "weather" | "difficulty") => {
+//   const chosenOptions =
+//     options === "weather" ? WEATHER_OPTIONS : DIFFICULTY_OPTIONS;
+//   return chosenOptions.reduce<Record<string, { checked: boolean }>>(
+//     (checkboxes, option) => {
+//       checkboxes[option.name] = { checked: false };
+//       return checkboxes;
+//     },
+//     {}
+//   );
+// };
+
 export default function FiltersSection() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string, isChecked: boolean) => {
+      const params = new URLSearchParams(searchParams.toString());
+      isChecked ? params.append(name, value) : params.delete(name, value);
+      params.sort();
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const hanelCheckboxOnChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    filterGroup: "weather" | "difficulty"
+  ) => {
+    router.push(
+      pathname +
+        "?" +
+        createQueryString(
+          `growing_${filterGroup}`,
+          event.target.id,
+          event.target.checked
+        )
+    );
+  };
+
   return (
     <div className='flex flex-col flex-1 items-center py-6 gap-20 bg-beige'>
       <fieldset className='flex gap-10'>
@@ -30,6 +73,10 @@ export default function FiltersSection() {
                 id={weatherOption.name}
                 name={weatherOption.name}
                 type='checkbox'
+                checked={searchParams
+                  .getAll("growing_weather")
+                  .includes(weatherOption.name)}
+                onChange={(event) => hanelCheckboxOnChange(event, "weather")}
               />
               <label
                 htmlFor={weatherOption.name}
@@ -54,6 +101,10 @@ export default function FiltersSection() {
                 id={difficultyOption.name}
                 name={difficultyOption.name}
                 type='checkbox'
+                checked={searchParams
+                  .getAll("growing_difficulty")
+                  .includes(difficultyOption.name)}
+                onChange={(event) => hanelCheckboxOnChange(event, "difficulty")}
               />
               <label
                 htmlFor={difficultyOption.name}
