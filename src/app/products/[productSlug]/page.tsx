@@ -25,7 +25,7 @@ export default async function ProductPage({
     <main className='mx-32 p-9'>
       <NavBreadCrumbs product={chosenProduct} />
       <div className='flex gap-10 mb-10'>
-        <PicturesDisplaySection imagesUrls={chosenProduct.imagesUrls} />
+        <PicturesDisplaySection product={chosenProduct} />
         <ProductInfoSection product={chosenProduct} />
       </div>
       <ProductTabsSection product={chosenProduct} />

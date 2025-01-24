@@ -2,6 +2,7 @@ export type ProductItem = {
   slug: string;
   label: string;
   imagesUrls: string[];
+  videoIds?: string[];
   price: { originalPrice: number; salesPrice?: number };
   category: string;
   collections: string[];
@@ -19,10 +20,8 @@ export const test_products: ProductItem[] = [
   {
     slug: "bok-choy-jade-star",
     label: "Bok Choy Jade Star",
-    imagesUrls: [
-      "/assets/Bok-Choy-Jade-star.jpg",
-      "/assets/Bok-Choy-Dark-Green.jpg"
-    ],
+    imagesUrls: ["/assets/Bok-Choy-Jade-star.jpg"],
+    videoIds: ["QM4-1ApxSyA"],
     price: {
       originalPrice: 249,
       salesPrice: 149
@@ -37,9 +36,9 @@ export const test_products: ProductItem[] = [
     ],
     sku: "A083",
     englishDescription:
-      "This Bok Choy grows upright. Plant is about 22cm tall, 35 cm wide. Leaf is dark green round shape, thick, smooth with short spoon shape petioles. Early maturing and productive. It can tolerant to cold weather and some hot weather. ",
+      "Heat resistant Bok Choy, plant is upright and large, ~24 cm tall, ~30 cm wide. Round leaf is green and wavy, pale green petiole is wide and short. Single plant can grow ~16 leaves and weighs up to 800g. It could be grown for baby/young plant or a full size. ",
     chineseDescription:
-      "植株直立，叶柄与地面略成直角。株高22厘米，开展度35厘米。中横径12厘米。叶片深绿色，15-17片，椭圆形或近圆形，长21厘米，宽18厘米，肥厚，平滑，全缘，基部无裂片。叶柄短，叶柄基部宽5厘米，上部宽1.9厘米，厚1.6厘米。叶柄基部肥厚，向内弯曲如匙，上部扁平，绿色，叶脉突出明显。早熟，丰产，品质优良。适应性强，较耐热、耐寒。",
+      "耐热青梗菜，株型中大而直立，束腰。成株株高24cm，开展度30cm＊30cm；叶片绿色，卵圆形，叶缘不平呈波状，长24cm，宽15cm，叶柄绿白色、稍短（4.5cm）而宽（6.2cm)；单株叶片16，重可达800克秋季栽培20天可采收菜秧，冬春栽培则需50-60天。移栽株行距22cm＊25cm，适温季节30天即可采收大棵菜。",
     additionalInfo: "",
     plantingGuild: "/assets/bok-choy-jade-star-planting.jpg",
     stockAmount: 110,
@@ -53,15 +52,19 @@ export const test_products: ProductItem[] = [
     slug: "bok-choy-dark-green",
     label: "Bok Choy Dark Green",
     imagesUrls: ["/assets/Bok-Choy-Dark-Green.jpg"],
+    videoIds: ["zvedJyMOXic"],
     price: {
       originalPrice: 199
     },
     category: "bok-choy",
     collections: ["leafy-greens", "cool-weather", "easy"],
     sku: "A073",
-    englishDescription: "",
+    englishDescription:
+      "This Bok Choy grows upright. Plant is about 22cm tall, 35 cm wide. Leaf is dark green round shape, thick, smooth with short spoon shape petioles. Early maturing and productive. It can tolerant to cold weather and some hot weather. ",
+    chineseDescription:
+      "植株直立，叶柄与地面略成直角。株高22厘米，开展度35厘米。中横径12厘米。叶片深绿色，15-17片，椭圆形或近圆形，长21厘米，宽18厘米，肥厚，平滑，全缘，基部无裂片。叶柄短，叶柄基部宽5厘米，上部宽1.9厘米，厚1.6厘米。叶柄基部肥厚，向内弯曲如匙，上部扁平，绿色，叶脉突出明显。早熟，丰产，品质优良。适应性强，较耐热、耐寒。",
     additionalInfo: "",
-    plantingGuild: "",
+    plantingGuild: "/assets/bok-choy-jade-star-planting.jpg",
     stockAmount: 0
   },
   {
