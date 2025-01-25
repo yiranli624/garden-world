@@ -115,20 +115,37 @@ main().catch(console.error);
 //   console.log("Edges created.");
 // }
 
-// async function insertInto<T extends keyof Database>(
-//   txn: Transaction<Database>,
-//   table: T,
-//   values: InsertObject<Database, T>
-// ) {
-//   const { insertId } = await txn
-//     .insertInto(table)
-//     .values(values)
-//     .executeTakeFirst();
+async function insertInto<T extends keyof Database>(
+  txn: Transaction<Database>,
+  table: T,
+  values: InsertObject<Database, T>
+) {
+  const { id: insertId } = await txn
+    .insertInto(table)
+    .values(values)
+    .returning("id")
+    .executeTakeFirstOrThrow();
 
-//   if (insertId === undefined) {
-//     throw new Error("Insert failed");
-//   }
+  return insertId;
+}
 
-//   return insertId;
-// }
-async function main() {}
+async function main() {
+  await db.transaction().execute(async (txn) => {
+    txn.deleteFrom("category").execute();
+    console.log("Category table erased.");
+    const vegetableId = await insertInto(txn, "category", {
+      type: "nav-root",
+      slug: "vegetable-seeds",
+      label: "Vegetable Seeds",
+      navIndex: 0
+    });
+    const celtuceId = await insertInto(txn, "category", {
+      type: "nav-menu",
+      slug: "celtuce",
+      label: "Celtuce 莴笋",
+      parentId: vegetableId
+    });
+    console.log("Categories created.");
+    // txn.deleteFrom("product").execute();
+  });
+}

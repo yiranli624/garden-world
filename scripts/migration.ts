@@ -6,7 +6,7 @@ import { Migrator, FileMigrationProvider } from "kysely";
 import { format } from "date-fns";
 import { db } from "../src/database.js";
 
-const PROJECT_DIRECTORY = path.resolve(import.meta.dirname, "..");
+const PROJECT_DIRECTORY = path.resolve(__dirname, "..");
 const MIGRATION_FOLDER = path.join(PROJECT_DIRECTORY, "src/migrations");
 const MIGRATION_TEMPLATE = `
 import { Kysely } from "kysely";
@@ -33,12 +33,12 @@ async function main() {
     .command(
       "migrate",
       "Apply all pending migrations",
-      withMigrator(migrateToLatest),
+      withMigrator(migrateToLatest)
     )
     .command(
       "rollback",
       "Undo the latest migration.",
-      withMigrator(migrateDown),
+      withMigrator(migrateDown)
     )
     .command(
       "generate",
@@ -48,18 +48,18 @@ async function main() {
         return yargs
           .option("n", {
             alias: "name",
-            describe: "The name to use",
+            describe: "The name to use"
           })
           .demandOption("name");
       },
-      generateMigration,
+      generateMigration
     )
     .demandCommand(1, "Please provide a command.")
     .parse();
 }
 
 function withMigrator(
-  fn: ({ migrator }: { migrator: Migrator }) => void | Promise<void>,
+  fn: ({ migrator }: { migrator: Migrator }) => void | Promise<void>
 ) {
   return async () => {
     const migrator = new Migrator({
@@ -67,8 +67,8 @@ function withMigrator(
       provider: new FileMigrationProvider({
         fs,
         path,
-        migrationFolder: MIGRATION_FOLDER,
-      }),
+        migrationFolder: MIGRATION_FOLDER
+      })
     });
     await fn({ migrator });
   };
@@ -81,7 +81,7 @@ async function migrateToLatest({ migrator }: { migrator: Migrator }) {
     for (const result of results) {
       if (result.status === "Success") {
         console.log(
-          `Migration "${result.migrationName}" was executed successfully.`,
+          `Migration "${result.migrationName}" was executed successfully.`
         );
       } else if (result.status === "Error") {
         console.error(`Failed to execute migration "${result.migrationName}".`);
@@ -102,7 +102,7 @@ async function migrateDown({ migrator }: { migrator: Migrator }) {
     for (const result of results) {
       if (result.status === "Success") {
         console.log(
-          `Migration "${result.migrationName}" was undone successfully`,
+          `Migration "${result.migrationName}" was undone successfully`
         );
       } else if (result.status === "Error") {
         console.error(`Failed to undo migration "${result.migrationName}"`);
@@ -128,7 +128,7 @@ async function generateMigration(argv: { name: string }) {
   const timestamp = format(new Date(), "yyyyMMddHHmmss");
   const absoluteFilePath = path.join(
     MIGRATION_FOLDER,
-    `${timestamp}-${normalizedName}.ts`,
+    `${timestamp}-${normalizedName}.ts`
   );
   const relativeFilePath = path.relative(PROJECT_DIRECTORY, absoluteFilePath);
   await fs.writeFile(absoluteFilePath, MIGRATION_TEMPLATE);
