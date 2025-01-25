@@ -1,5 +1,6 @@
 import {
   NavBreadCrumbs,
+  NavigationWrapper,
   PicturesDisplaySection,
   ProductInfoSection,
   ProductTabsSection
@@ -22,13 +23,15 @@ export default async function ProductPage({
   }
 
   return (
-    <main className='mx-32 p-9'>
-      <NavBreadCrumbs product={chosenProduct} />
-      <div className='flex gap-10 mb-10'>
-        <PicturesDisplaySection product={chosenProduct} />
-        <ProductInfoSection product={chosenProduct} />
-      </div>
-      <ProductTabsSection product={chosenProduct} />
-    </main>
+    <NavigationWrapper showBanner={false}>
+      <main className='mx-32 p-9'>
+        <NavBreadCrumbs product={chosenProduct} />
+        <div className='flex gap-10 mb-10'>
+          <PicturesDisplaySection product={chosenProduct} />
+          <ProductInfoSection product={chosenProduct} />
+        </div>
+        <ProductTabsSection product={chosenProduct} />
+      </main>
+    </NavigationWrapper>
   );
 }

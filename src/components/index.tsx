@@ -1,3 +1,4 @@
+export { default as NavigationWrapper } from "./NavigationWrapper";
 export { default as SearchBar } from "./SearchBar";
 export { default as NavigationBar } from "./NavigationBar";
 export { default as BrowsingSection } from "./BrowsingSection";

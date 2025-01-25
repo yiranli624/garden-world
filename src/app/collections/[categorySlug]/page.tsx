@@ -1,4 +1,4 @@
-import { BrowsingSection } from "@/components";
+import { BrowsingSection, NavigationWrapper } from "@/components";
 import { ALL_CATEGORIES } from "@/components/constants";
 import { test_products } from "@/components/testData";
 
@@ -29,8 +29,10 @@ export default async function CategoryPage({
   });
 
   return (
-    <main className='p-10'>
-      <BrowsingSection listItems={filteredItems} />
-    </main>
+    <NavigationWrapper>
+      <main className='p-10'>
+        <BrowsingSection listItems={filteredItems} />
+      </main>
+    </NavigationWrapper>
   );
 }
