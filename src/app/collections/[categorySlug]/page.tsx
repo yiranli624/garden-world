@@ -11,6 +11,9 @@ export default async function CategoryPage({
 
   const filteredItems = test_products.filter((product) => {
     return (
+      // when param is a collection
+      // is param included in product collections
+      product.collections.includes(categorySlug) ||
       // when param is a menu
       // is product category matching the param
       product.category === categorySlug ||

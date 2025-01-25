@@ -28,7 +28,7 @@ export default function PicturesDisplaySection({
   // TODO: add index to picture to determain order, then sort here before display
 
   return (
-    <div className='flex-none h-full'>
+    <div className='flex-none h-full w-[45%]'>
       {isVideo ? (
         <iframe
           src={generateVideoSrc(chosenImage, "embed")}
@@ -49,7 +49,7 @@ export default function PicturesDisplaySection({
         />
       )}
 
-      <ul className='grid grid-cols-4 h-32 gap-2 py-4 overflow-auto'>
+      <ul className='flex flex-wrap gap-2 py-4 overflow-auto'>
         {imagesUrls.map((imgUrl) => (
           <a
             key={imgUrl}
@@ -65,7 +65,7 @@ export default function PicturesDisplaySection({
               alt='small picture of the product'
               width={88}
               height={88}
-              className={classNames({
+              className={classNames("w-auto h-[88px]", {
                 "border-2 border-stone-700 opacity-70": chosenImage === imgUrl,
                 "border-2 border-slate-200": chosenImage !== imgUrl
               })}
