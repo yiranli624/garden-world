@@ -37,9 +37,11 @@ export default function ProductInfoSection({
           <p className='line-through text-slate-500'>${originalPrice}</p>
         )}
         <p className='font-bold'>${currentPrice}</p>
-        <p className='text-lg'>
-          (~ {product.seedsPerPack} seeds/每包约{product.seedsPerPack}粒)
-        </p>
+        {product.amountPerPack && (
+          <p className='text-lg'>
+            (~ {product.amountPerPack} seeds/每包约{product.amountPerPack}粒)
+          </p>
+        )}
       </div>
 
       <div className='flex flex-col gap-4 '>

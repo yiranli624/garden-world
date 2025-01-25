@@ -9,10 +9,10 @@ export type ProductItem = {
   sku: string;
   englishDescription: string;
   chineseDescription?: string;
-  plantingGuild: string;
+  instructionImageUrls: string[];
   additionalInfo: string;
   stockAmount: number;
-  seedsPerPack?: number;
+  amountPerPack?: number;
   specialSellMessages?: string[];
 };
 
@@ -40,9 +40,9 @@ export const test_products: ProductItem[] = [
     chineseDescription:
       "耐热青梗菜，株型中大而直立，束腰。成株株高24cm，开展度30cm＊30cm；叶片绿色，卵圆形，叶缘不平呈波状，长24cm，宽15cm，叶柄绿白色、稍短（4.5cm）而宽（6.2cm)；单株叶片16，重可达800克秋季栽培20天可采收菜秧，冬春栽培则需50-60天。移栽株行距22cm＊25cm，适温季节30天即可采收大棵菜。",
     additionalInfo: "",
-    plantingGuild: "/assets/bok-choy-jade-star-planting.jpg",
+    instructionImageUrls: ["/assets/bok-choy-jade-star-planting.jpg"],
     stockAmount: 110,
-    seedsPerPack: 1000,
+    amountPerPack: 1000,
     specialSellMessages: [
       "Free Shipping on Seed orders over $50",
       "use code 50Free (excluding Canada)"
@@ -64,7 +64,7 @@ export const test_products: ProductItem[] = [
     chineseDescription:
       "植株直立，叶柄与地面略成直角。株高22厘米，开展度35厘米。中横径12厘米。叶片深绿色，15-17片，椭圆形或近圆形，长21厘米，宽18厘米，肥厚，平滑，全缘，基部无裂片。叶柄短，叶柄基部宽5厘米，上部宽1.9厘米，厚1.6厘米。叶柄基部肥厚，向内弯曲如匙，上部扁平，绿色，叶脉突出明显。早熟，丰产，品质优良。适应性强，较耐热、耐寒。",
     additionalInfo: "",
-    plantingGuild: "/assets/bok-choy-jade-star-planting.jpg",
+    instructionImageUrls: ["/assets/bok-choy-jade-star-planting.jpg"],
     stockAmount: 0
   },
   {
@@ -80,7 +80,7 @@ export const test_products: ProductItem[] = [
     sku: "A051",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 73
   },
   {
@@ -95,7 +95,7 @@ export const test_products: ProductItem[] = [
     sku: "A050",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 56
   },
   {
@@ -111,7 +111,7 @@ export const test_products: ProductItem[] = [
     sku: "A082",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 90
   },
   {
@@ -126,7 +126,7 @@ export const test_products: ProductItem[] = [
     sku: "A072",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 49
   },
   {
@@ -142,7 +142,7 @@ export const test_products: ProductItem[] = [
     sku: "A053",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 73
   },
   {
@@ -157,7 +157,7 @@ export const test_products: ProductItem[] = [
     sku: "A054",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 56
   },
   {
@@ -172,7 +172,7 @@ export const test_products: ProductItem[] = [
     sku: "A080",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 10
   },
   {
@@ -188,7 +188,7 @@ export const test_products: ProductItem[] = [
     sku: "A075",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 39
   },
   {
@@ -203,7 +203,7 @@ export const test_products: ProductItem[] = [
     sku: "A052",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 173
   },
   {
@@ -218,7 +218,7 @@ export const test_products: ProductItem[] = [
     sku: "C001",
     englishDescription: "",
     additionalInfo: "",
-    plantingGuild: "",
+    instructionImageUrls: [],
     stockAmount: 26
   }
 ];

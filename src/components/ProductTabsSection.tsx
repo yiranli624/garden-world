@@ -43,23 +43,26 @@ export default function ProductTabsSection({
           </li>
         ))}
       </ul>
-      <div className='bg-slate-100 p-6'>
-        {chosenTab === 0 && (
-          <Image
-            src={product.plantingGuild}
-            alt='picture of planting guildence of the product'
-            width={385}
-            height={490}
-            style={{ width: "auto" }}
-          />
+      <div className='flex flex-wrap gap-10 bg-slate-100 p-6 justify-between '>
+        {chosenTab === 0 &&
+          product.instructionImageUrls.map((instructionImgUrl) => (
+            <Image
+              key={instructionImgUrl}
+              src={instructionImgUrl}
+              alt='picture of planting guildence of the product'
+              width={385}
+              height={490}
+              className='w-auto'
+              // style={{ width: "auto", }}
+            />
 
-          // <p>
-          //   {product.englishDescription} {product.chineseDescription}
-          //   {product.englishDescription} {product.chineseDescription}
-          //   {product.englishDescription} {product.chineseDescription}
-          //   {product.englishDescription} {product.chineseDescription}
-          // </p>
-        )}
+            // <p>
+            //   {product.englishDescription} {product.chineseDescription}
+            //   {product.englishDescription} {product.chineseDescription}
+            //   {product.englishDescription} {product.chineseDescription}
+            //   {product.englishDescription} {product.chineseDescription}
+            // </p>
+          ))}
         {chosenTab === 1 && <p>{product.additionalInfo}</p>}
       </div>
     </div>
