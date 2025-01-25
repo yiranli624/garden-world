@@ -71,7 +71,7 @@ export default function ProductInfoSection({
             type='number'
             min={1}
             step={1}
-            className='w-1/3 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-500 focus-visible:outline-offset-4 focus-visible:shadow z-10'
+            className='w-1/3 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-500 focus-visible:outline-offset-4 focus-visible:shadow-sm z-10'
             value={quantity}
             onChange={(event) => {
               handleQuantityChange(event);
@@ -93,7 +93,7 @@ export default function ProductInfoSection({
         </div>
         <button
           className={classNames(
-            "h-12 w-full bg-lime-700 rounded text-white text-lg",
+            "h-12 w-full bg-lime-700 rounded-sm text-white text-lg",
             {
               "cursor-not-allowed": !isInStock
             }
@@ -120,7 +120,7 @@ export default function ProductInfoSection({
               className='flex items-center p-1 cursor-pointer text-lime-700 hover:bg-olive'
             >
               {/* hover:scale-110 hover:text-slate-700 
-              hover:shadow-lg hover:bg-lime-700 hover:text-white hover:rounded */}
+              hover:shadow-lg hover:bg-lime-700 hover:text-white hover:rounded-sm */}
               <Image
                 src={"/assets/lightbulb.svg"}
                 alt='picture of light bulb'
