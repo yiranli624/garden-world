@@ -31,6 +31,11 @@ export default function NavigationBar({
 
   return (
     <ul className='flex gap-2 mx-4 justify-center'>
+      <Link className='cursor-pointer text-2xl' key='home' href={"/"}>
+        <li className='flex h-16 items-center px-4 hover:text-emerald-800'>
+          Home
+        </li>
+      </Link>
       {allNavItems.map((navItem) => (
         <li className='cursor-pointer text-2xl' key={navItem.slug}>
           <a

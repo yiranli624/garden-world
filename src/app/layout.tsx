@@ -9,47 +9,47 @@ export type NavItems = {
   navIndex: number;
 };
 
+const generateNavItems = (): NavItems[] => {
+  const allNavItems = ALL_CATEGORIES.reduce<NavItems[]>(
+    (navItems, category) => {
+      if (category.type === "nav-root") {
+        const navItem: NavItems = {
+          slug: category.slug,
+          label: category.label,
+          navIndex: category.navIndex,
+          menu: []
+        };
+        if (category.slug !== "collections") {
+          navItem.menu.push({
+            slug: category.slug,
+            label: `All ${category.label}`
+          });
+        }
+
+        navItems.push(navItem);
+      }
+      navItems.sort((a, b) => a.navIndex - b.navIndex);
+      return navItems;
+    },
+    []
+  );
+
+  ALL_CATEGORIES.forEach((category) => {
+    allNavItems.forEach((navItem) => {
+      if (category.type === "nav-menu" && navItem.slug === category.parent) {
+        navItem.menu.push(category);
+      }
+    });
+  });
+
+  return allNavItems;
+};
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const generateNavItems = (): NavItems[] => {
-    const allNavItems = ALL_CATEGORIES.reduce<NavItems[]>(
-      (navItems, category) => {
-        if (category.type === "nav-root") {
-          const navItem = {
-            slug: category.slug,
-            label: category.label,
-            navIndex: category.navIndex,
-            menu: [
-              {
-                slug: category.slug === "collections" ? "/" : category.slug,
-                label: `All ${
-                  category.slug === "collections" ? "Items" : category.label
-                }`
-              }
-            ]
-          };
-          navItems.push(navItem);
-        }
-        navItems.sort((a, b) => a.navIndex - b.navIndex);
-        return navItems;
-      },
-      []
-    );
-
-    ALL_CATEGORIES.forEach((category) => {
-      allNavItems.forEach((navItem) => {
-        if (category.type === "nav-menu" && navItem.slug === category.parent) {
-          navItem.menu.push(category);
-        }
-      });
-    });
-
-    return allNavItems;
-  };
-
   return (
     <html lang='en'>
       <body className='font-serif'>
