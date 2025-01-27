@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ALL_CATEGORIES } from "./constants";
-import { ProductItem } from "./testData";
+import { FullProduct } from "@/queries/productQueries";
 
-const getBreadCrumbs = (chosenProduct: ProductItem) => {
+const getBreadCrumbs = (chosenProduct: FullProduct) => {
   const lastCategory = ALL_CATEGORIES.find(
-    (category) => category.slug === chosenProduct.category
+    (category) => category.slug === chosenProduct.category.slug
   );
   if (lastCategory?.type === "nav-menu") {
     const parentCategory = ALL_CATEGORIES.find(
@@ -22,7 +22,7 @@ const getBreadCrumbs = (chosenProduct: ProductItem) => {
   }
 };
 
-export default function NavBreadCrumbs({ product }: { product: ProductItem }) {
+export default function NavBreadCrumbs({ product }: { product: FullProduct }) {
   const breadCrumbs = getBreadCrumbs(product);
 
   return (

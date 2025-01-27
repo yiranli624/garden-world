@@ -1,8 +1,8 @@
 "use client";
+import { Product } from "@/types";
 import classNames from "classnames";
 import Image from "next/image";
 import { useState } from "react";
-import { ProductItem } from "./testData";
 
 const generateVideoSrc = (videoId: string, srcType: "img" | "embed") => {
   return srcType === "img"
@@ -13,7 +13,7 @@ const generateVideoSrc = (videoId: string, srcType: "img" | "embed") => {
 export default function PicturesDisplaySection({
   product
 }: {
-  product: ProductItem;
+  product: Product;
 }) {
   const imagesUrls = product.videoIds
     ? [...product.imagesUrls, ...product.videoIds]

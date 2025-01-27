@@ -22,6 +22,9 @@ export type CategoryTable = {
   parentId: bigint | undefined;
   navIndex: number | undefined;
 };
+export type Category = Selectable<CategoryTable>;
+export type NewCategory = Insertable<CategoryTable>;
+export type CategoryUpdate = Updateable<CategoryTable>;
 
 export type ProductTable = {
   id: Generated<bigint>;
@@ -40,15 +43,24 @@ export type ProductTable = {
   additionalInfo: Record<string, unknown>; //anything json-able
   amountPerPack: number | undefined;
 };
+export type Product = Selectable<ProductTable>;
+export type NewProduct = Insertable<ProductTable>;
+export type ProductUpdate = Updateable<ProductTable>;
 
 export type ProductCollectionTable = {
   id: Generated<bigint>;
   productId: bigint;
   collectionId: bigint;
 };
+export type ProductCollection = Selectable<ProductCollectionTable>;
+export type NewProductCollection = Insertable<ProductCollectionTable>;
+export type ProductCollectionUpdate = Updateable<ProductCollectionTable>;
 
 export type AnnouncementTable = {
   id: Generated<bigint>;
-  announcement: string;
+  text: string;
   location: string; // 'top' | 'product' | 'both'
 };
+export type Announcement = Selectable<AnnouncementTable>;
+export type NewAnnouncement = Insertable<AnnouncementTable>;
+export type AnnouncementUpdate = Updateable<AnnouncementTable>;

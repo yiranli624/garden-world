@@ -2,14 +2,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
-import { ProductItem } from "./testData";
+import { FullProduct } from "@/queries/productQueries";
 
 export default function ProductTabsSection({
   product
 }: {
-  product: ProductItem;
+  product: FullProduct;
 }) {
-  const isToolProduct = product.category.includes("tool");
+  const isToolProduct = product.category.slug.includes("tool");
 
   const tabs = isToolProduct
     ? ["INSTRUCTION", "ADDITIONAL INFORMATION"]
@@ -63,7 +63,7 @@ export default function ProductTabsSection({
             //   {product.englishDescription} {product.chineseDescription}
             // </p>
           ))}
-        {chosenTab === 1 && <p>{product.additionalInfo}</p>}
+        {chosenTab === 1 && <p>{JSON.stringify(product.additionalInfo)}</p>}
       </div>
     </div>
   );

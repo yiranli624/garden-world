@@ -3,20 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import classNames from "classnames";
-import { ProductItem } from "./testData";
 import { ALL_CATEGORIES } from "./constants";
+import { FullProduct } from "@/queries/productQueries";
 
 export default function ProductInfoSection({
   product
 }: {
-  product: ProductItem;
+  product: FullProduct;
 }) {
   const [quantity, setQuantity] = useState(1);
 
-  const originalPrice = (product.price.originalPrice / 100).toFixed(2);
-  const currentPrice = product.price.salesPrice
-    ? (product.price.salesPrice / 100).toFixed(2)
-    : (product.price.originalPrice / 100).toFixed(2);
+  const originalPrice = (product.originalPrice / 100).toFixed(2);
+  const currentPrice = product.salesPrice
+    ? (product.salesPrice / 100).toFixed(2)
+    : (product.originalPrice / 100).toFixed(2);
   const isInStock = product.stockAmount > 0;
   const collectionsWithCategory = [product.category, ...product.collections];
 
@@ -33,7 +33,7 @@ export default function ProductInfoSection({
       </div>
 
       <div className='flex gap-3 text-2xl items-center'>
-        {product.price.salesPrice && (
+        {product.salesPrice && (
           <p className='line-through text-slate-500'>${originalPrice}</p>
         )}
         <p className='font-bold'>${currentPrice}</p>
@@ -107,9 +107,9 @@ export default function ProductInfoSection({
       </div>
 
       <div className='h-1/5 bg-olive flex flex-col items-center justify-center p-2'>
-        {product.specialSellMessages?.map((message, ind) => (
+        {/* {product.specialSellMessages?.map((message, ind) => (
           <p key={ind}>{message}</p>
-        ))}
+        ))} */}
       </div>
 
       <div className='text-base'>
@@ -118,7 +118,7 @@ export default function ProductInfoSection({
           {collectionsWithCategory.map((collection, ind) => (
             <Link
               key={ind}
-              href={`/collections/${collection}`}
+              href={`/collections/${collection.slug}`}
               className='flex items-center p-1 cursor-pointer text-lime-700 hover:bg-olive'
             >
               {/* hover:scale-110 hover:text-slate-700 
@@ -132,7 +132,7 @@ export default function ProductInfoSection({
               <p className='text-sm'>
                 {
                   ALL_CATEGORIES.find(
-                    (categoryMenu) => categoryMenu.slug === collection
+                    (categoryMenu) => categoryMenu.slug === collection.slug
                   )?.label
                 }
               </p>

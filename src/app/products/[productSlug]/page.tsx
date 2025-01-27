@@ -1,3 +1,4 @@
+import { db } from "@/database";
 import {
   NavBreadCrumbs,
   NavigationWrapper,
@@ -5,8 +6,8 @@ import {
   ProductInfoSection,
   ProductTabsSection
 } from "@/components";
-import { test_products } from "@/components/testData";
 import { redirect } from "next/navigation";
+import { getProduct } from "@/queries/productQueries";
 
 export default async function ProductPage({
   params
@@ -14,9 +15,10 @@ export default async function ProductPage({
   params: Promise<{ productSlug: string }>;
 }) {
   const productSlug = (await params).productSlug;
-  const chosenProduct = test_products.find(
-    (product) => product.slug === productSlug
-  );
+  // const chosenProduct = test_products.find(
+  //   (product) => product.slug === productSlug
+  // );
+  const chosenProduct = await getProduct(productSlug);
 
   if (!chosenProduct) {
     redirect("/");
