@@ -9,7 +9,7 @@ async function getCsvString(filePath: string) {
 }
 
 async function handleCategory() {
-  const CSV_STRING = await getCsvString(
+  const csvString = await getCsvString(
     "/Users/elle/Elle/code/garden-world/category.csv"
   );
 
@@ -32,7 +32,7 @@ async function handleCategory() {
         resolve();
       });
 
-    categoryData.write(CSV_STRING);
+    categoryData.write(csvString);
     categoryData.end();
   });
 
@@ -43,7 +43,7 @@ async function handleCategory() {
         (row) => categoryRow.parentSlug === row.slug
       );
       if (categoryRow.parentSlug && !parentCategory) {
-        throw new Error(`why ${categoryParialDbCols[0]}`);
+        throw new Error(`error happening on ${categoryRow.slug}`);
       }
 
       const udpatedCategory = { ...categoryRow, parentId: parentCategory?.id };
@@ -57,6 +57,37 @@ async function handleCategory() {
       categoryDbRow && categoryParialDbCols.push(categoryDbRow);
     }
   });
+}
+
+async function handleAnnouncement() {
+  const csvString = await getCsvString(
+    "/Users/elle/Elle/code/garden-world/announcement.csv"
+  );
+  const announcementCsvRows: Record<"text" | "location", string>[] = [];
+
+  await new Promise<void>((resolve) => {
+    const announcementData = parse({ headers: true })
+      .on("error", (error) => {
+        throw error;
+      })
+      .on("data", (row) => announcementCsvRows.push(row))
+      .on("end", (rowCount: number) => {
+        console.log(`Parsed ${rowCount} rows`);
+        resolve();
+      });
+
+    announcementData.write(csvString);
+    announcementData.end();
+  });
+
+  for (const announcementRow of announcementCsvRows) {
+    await db.transaction().execute(async (txn) => {
+      await txn
+        .insertInto("announcement")
+        .values(announcementRow)
+        .executeTakeFirstOrThrow();
+    });
+  }
 }
 
 async function main() {
@@ -83,6 +114,7 @@ async function main() {
     case "productCollection":
       break;
     case "announcement":
+      await handleAnnouncement();
       break;
     default:
       return;
