@@ -10,12 +10,13 @@
     "generate": "tsx scripts/migration.ts generate",
     "migration": "tsx scripts/migration.ts migrate",
     "rollback": "tsx scripts/migration.ts rollback",
-    "seed": "tsx scripts/seed.ts"       
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@types/yargs": "^17.0.33",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
+    "fast-csv": "^5.0.2",
     "kysely": "^0.27.5",
     "next": "15.1.4",
     "pg": "^8.13.1",
