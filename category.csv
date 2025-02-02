@@ -1,0 +1,33 @@
+type,slug,label,parentSlug,navIndex
+nav-root,vegetable-seeds,Vegetable Seeds,,0
+nav-menu,tong-ho,Tong Ho 茼蒿,vegetable-seeds,
+nav-menu,green-bean,Green Bean 芸豆,vegetable-seeds,
+nav-menu,celtuce,Celtuce 莴笋,vegetable-seeds,
+nav-menu,lettuce,Lettuce 生菜,vegetable-seeds,
+nav-menu,bok-choy,Bok Choy 小青菜,vegetable-seeds,
+nav-menu,wu-choy,Wu Choy 乌菜,vegetable-seeds,
+nav-menu,yu-choy-sum,Yu Choy Sum 油菜心,vegetable-seeds,
+nav-menu,chinese-cabbage,Chinese Cabbage大白菜,vegetable-seeds,
+nav-root,herb-seeds,Herb Seeds,,1
+nav-menu,green-onion,Green Onion 大葱,herb-seeds,
+nav-menu,cilantro,Cilantro 香菜,herb-seeds,
+nav-menu,fennel,Fennel 茴香,herb-seeds,
+nav-root,tools,Tools,,2
+nav-menu,cookware,Cookware 厨具,tools,
+nav-menu,garden-tool,Gardening Tool 工具,tools,
+nav-root,collections,Collections,,3
+nav-menu,beans-and-peas,Beans & Peas 豆类,collections,
+nav-menu,leafy-greens,Leafy Greens 叶类,collections,
+nav-menu,heading-vegetables,Heading Vegetables 结球,collections,
+nav-menu,stem-vegetables,Stem Vegetables 杆类,collections,
+nav-menu,flower-vegetables,Flower Vegetables 花类,collections,
+none-nav,cold-weather,Cold Weather 低温,,
+none-nav,cool-weather,Cool Weather 喜凉,,
+none-nav,mild-weather,Mild Weather 温和,,
+none-nav,warm-weather,Warm Weather 温暖,,
+none-nav,hot-weather,Hot Weather 炎热,,
+none-nav,very-easy,Very Easy 非常容易,,
+none-nav,easy,Easy 容易,,
+none-nav,medium,Medium 一般,,
+none-nav,difficult,Difficult 较难,,
+none-nav,very-difficult,Very Difficult 很难,,
