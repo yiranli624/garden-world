@@ -3,8 +3,38 @@ import { hideBin } from "yargs/helpers";
 import { db } from "@/database";
 import { parse } from "@fast-csv/parse";
 import fs from "fs/promises";
+import path from "path";
 
-async function getCsvString(filePath: string) {
+type CategoryCsvRow = {
+  type: string;
+  slug: string;
+  label: string;
+  navIndex: string;
+  parentSlug?: string;
+};
+
+type ProductCsvRow = {
+  slug: string;
+  label: string;
+  imagesUrls: string;
+  videoIds: string;
+  originalPrice: string;
+  salesPrice: string;
+  categorySlug: string;
+  sku: string;
+  stockAmount: string;
+  amountPerPack: string;
+  collection: string;
+  englishDescription: string;
+  chineseDescription: string;
+  instructionImageUrls: string;
+  additionalInfo: string;
+};
+
+type AnnouncementCsvRow = Record<"text" | "location", string>;
+
+async function getCsvString(fileName: string) {
+  const filePath = path.resolve(__dirname, `../${fileName}`);
   return await fs.readFile(filePath, "utf8");
 }
 
@@ -17,12 +47,12 @@ function changeStringToArray(str: string) {
     .split(",")
     .filter((eachStr) => eachStr !== "");
 }
+
 function changeStringToNumber(options: {
   str: string;
   allowUndefined: false;
   replaceDecimal?: boolean;
 }): number;
-
 function changeStringToNumber(options: {
   str: string;
   allowUndefined: true;
@@ -47,25 +77,16 @@ function changeStringToNumber({
   throw new Error(`The ${str} should not be undefined`);
 }
 
-async function handleCategory() {
-  const csvString = await getCsvString(
-    "/Users/elle/Elle/code/garden-world/category.csv"
-  );
-
-  const categoryCsvRows: {
-    type: string;
-    slug: string;
-    label: string;
-    navIndex: number;
-    parentSlug?: string;
-  }[] = [];
-
+async function parseCsvFile<CsvRow extends Record<string, string | number>>(
+  csvString: string
+) {
+  const csvRows: CsvRow[] = [];
   await new Promise<void>((resolve) => {
     const categoryData = parse({ headers: true })
       .on("error", (error) => {
         throw error;
       })
-      .on("data", (row) => categoryCsvRows.push(row))
+      .on("data", (row) => csvRows.push(row))
       .on("end", (rowCount: number) => {
         console.log(`Parsed ${rowCount} rows`);
         resolve();
@@ -74,6 +95,13 @@ async function handleCategory() {
     categoryData.write(csvString);
     categoryData.end();
   });
+  return csvRows;
+}
+
+async function handleCategory() {
+  const csvString = await getCsvString("category.csv");
+
+  const categoryCsvRows = await parseCsvFile<CategoryCsvRow>(csvString);
 
   await db.transaction().execute(async (txn) => {
     const categoryParialDbCols: { id: bigint; slug: string }[] = [];
@@ -85,7 +113,14 @@ async function handleCategory() {
         throw new Error(`error happening on ${categoryRow.slug}`);
       }
 
-      const udpatedCategory = { ...categoryRow, parentId: parentCategory?.id };
+      const udpatedCategory = {
+        ...categoryRow,
+        parentId: parentCategory?.id,
+        navIndex: changeStringToNumber({
+          str: categoryRow.navIndex,
+          allowUndefined: true
+        })
+      };
       delete udpatedCategory.parentSlug;
 
       const categoryDbRow = await txn
@@ -100,25 +135,8 @@ async function handleCategory() {
 }
 
 async function handleAnnouncement() {
-  const csvString = await getCsvString(
-    "/Users/elle/Elle/code/garden-world/announcement.csv"
-  );
-  const announcementCsvRows: Record<"text" | "location", string>[] = [];
-
-  await new Promise<void>((resolve) => {
-    const announcementData = parse({ headers: true })
-      .on("error", (error) => {
-        throw error;
-      })
-      .on("data", (row) => announcementCsvRows.push(row))
-      .on("end", (rowCount: number) => {
-        console.log(`Parsed ${rowCount} rows`);
-        resolve();
-      });
-
-    announcementData.write(csvString);
-    announcementData.end();
-  });
+  const csvString = await getCsvString("announcement.csv");
+  const announcementCsvRows = await parseCsvFile<AnnouncementCsvRow>(csvString);
 
   for (const announcementRow of announcementCsvRows) {
     await db.transaction().execute(async (txn) => {
@@ -131,41 +149,8 @@ async function handleAnnouncement() {
 }
 
 async function handleProduct() {
-  const csvString = await getCsvString(
-    "/Users/elle/Elle/code/garden-world/product.csv"
-  );
-  const productCsvRows: {
-    slug: string;
-    label: string;
-    imagesUrls: string;
-    videoIds: string;
-    originalPrice: string;
-    salesPrice: string;
-    categorySlug: string;
-    sku: string;
-    stockAmount: string;
-    amountPerPack: string;
-    collection: string;
-    englishDescription: string;
-    chineseDescription: string;
-    instructionImageUrls: string;
-    additionalInfo: string;
-  }[] = [];
-
-  await new Promise<void>((resolve) => {
-    const productData = parse({ headers: true })
-      .on("error", (error) => {
-        throw error;
-      })
-      .on("data", (row) => productCsvRows.push(row))
-      .on("end", (rowCount: number) => {
-        console.log(`Parsed ${rowCount} rows`);
-        resolve();
-      });
-
-    productData.write(csvString);
-    productData.end();
-  });
+  const csvString = await getCsvString("product.csv");
+  const productCsvRows = await parseCsvFile<ProductCsvRow>(csvString);
 
   await db.transaction().execute(async (txn) => {
     for (const productRow of productCsvRows) {
@@ -196,7 +181,6 @@ async function handleProduct() {
           : [];
 
       if (collectionArray.length !== collections.length) {
-        // console.log(collectionArray.length, collections.length);
         throw new Error(
           `Should have all collections but not, product.collection is ${collectionArray.join(
             ","
