@@ -28,12 +28,14 @@ export async function getProduct(productSlug: string): Promise<FullProduct> {
       .execute()
   ).map((row) => row.collectionId);
 
-  const productCollections = await db
-    .selectFrom("category")
-    .selectAll()
-    .where("category.id", "in", collectionIds)
-    .execute();
-
+  let productCollections: Category[] = [];
+  if (collectionIds.length > 0) {
+    productCollections = await db
+      .selectFrom("category")
+      .selectAll()
+      .where("category.id", "in", collectionIds)
+      .execute();
+  }
   const chosenProduct = {
     ...rawProduct,
     category: productCategory,
@@ -41,4 +43,18 @@ export async function getProduct(productSlug: string): Promise<FullProduct> {
   };
 
   return chosenProduct;
+}
+
+export async function getAllProducts(): Promise<FullProduct[]> {
+  const rawProducts = await db
+    .selectFrom("product")
+    .select("slug")
+    .selectAll()
+    .execute();
+
+  return Promise.all(
+    rawProducts.map(async (product) => {
+      return await getProduct(product.slug);
+    })
+  );
 }

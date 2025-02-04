@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { ProductItem } from "@/components/testData";
 import Link from "next/link";
+import { FullProduct } from "@/queries/productQueries";
+import { generateImgUrl } from "./helpers";
 
-export default function ItemCard({ listItem }: { listItem: ProductItem }) {
-  const originalPrice = (listItem.price.originalPrice / 100).toFixed(2);
-  const currentPrice = listItem.price.salesPrice
-    ? (listItem.price.salesPrice / 100).toFixed(2)
-    : (listItem.price.originalPrice / 100).toFixed(2);
+export default function ItemCard({ listItem }: { listItem: FullProduct }) {
+  const originalPrice = (listItem.originalPrice / 100).toFixed(2);
+  const currentPrice = listItem.salesPrice
+    ? (listItem.salesPrice / 100).toFixed(2)
+    : (listItem.originalPrice / 100).toFixed(2);
   const isInStock = listItem.stockAmount > 0;
 
   return (
@@ -16,7 +18,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
     >
       <div className='relative'>
         <Image
-          src={listItem.imagesUrls[0]}
+          src={generateImgUrl(listItem.imagesUrls[0])}
           alt='picture of the selling item'
           width={384}
           height={384}
@@ -39,7 +41,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
       <div className='h-full flex flex-col justify-center'>
         <p className='text-center'>{listItem.label}</p>
         <div className='flex justify-center gap-2 text-md'>
-          {listItem.price.salesPrice && (
+          {listItem.salesPrice && (
             <Image
               src='/assets/sale-tag.svg'
               alt='picture of a sale sign'
@@ -47,7 +49,7 @@ export default function ItemCard({ listItem }: { listItem: ProductItem }) {
               height={30}
             />
           )}
-          {listItem.price.salesPrice && (
+          {listItem.salesPrice && (
             <p className='line-through text-slate-500'>${originalPrice}</p>
           )}
           <p className='font-bold'>${currentPrice}</p>

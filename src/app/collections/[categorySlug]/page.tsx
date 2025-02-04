@@ -1,7 +1,7 @@
+import { getAllProducts } from "@/queries/productQueries";
 import BrowsingSection from "../../../components/BrowsingSection";
 import NavigationWrapper from "../../../components/NavigationWrapper";
-import { ALL_CATEGORIES } from "@/components/constants";
-import { test_products } from "@/components/testData";
+import { getCategories } from "@/queries/categoryQueries";
 
 export default async function CategoryPage({
   params
@@ -9,22 +9,26 @@ export default async function CategoryPage({
   params: Promise<{ categorySlug: string }>;
 }) {
   const categorySlug = (await params).categorySlug;
+  const listItems = await getAllProducts();
+  const allCategories = await getCategories();
 
-  const filteredItems = test_products.filter((product) => {
+  const filteredItems = listItems.filter((product) => {
     return (
       // when param is a collection
       // is param included in product collections
-      product.collections.includes(categorySlug) ||
+      product.collections
+        .map((collection) => collection.slug)
+        .includes(categorySlug) ||
       // when param is a menu
       // is product category matching the param
-      product.category === categorySlug ||
+      product.category.slug === categorySlug ||
       // when param is a root
       // In flat category, if you are included in product collections, is your parent matching param
-      ALL_CATEGORIES.some(
+      allCategories.some(
         (eachCategory) =>
-          product.category === eachCategory.slug &&
+          product.category.slug === eachCategory.slug &&
           eachCategory.type === "nav-menu" &&
-          eachCategory.parent === categorySlug
+          eachCategory.parentCategory!.slug === categorySlug
       )
     );
   });

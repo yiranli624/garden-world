@@ -1,13 +1,13 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { ProductItem } from "@/components/testData";
 import FiltersSection from "./FiltersSection";
 import ItemCard from "./ItemCard";
+import { FullProduct } from "@/queries/productQueries";
 
 export default function BrowsingSection({
   listItems
 }: {
-  listItems: ProductItem[];
+  listItems: FullProduct[];
 }) {
   const searchParams = useSearchParams();
   const filterGroups = [
@@ -21,7 +21,9 @@ export default function BrowsingSection({
         return (
           finalDecision &&
           filterGroup.some((filterOption) =>
-            item.collections.includes(filterOption)
+            item.collections
+              .map((collection) => collection.slug)
+              .includes(filterOption)
           )
         );
       }
@@ -36,7 +38,7 @@ export default function BrowsingSection({
         {filteredItems
           .sort((a, b) => a.label.localeCompare(b.label))
           .map((listItem, ind) => (
-            <ItemCard listItem={listItem} key={listItem.slug + ind} />
+            <ItemCard listItem={listItem} key={listItem.id} />
           ))}
       </div>
     </div>
