@@ -3,11 +3,11 @@ import { Product } from "@/types";
 import classNames from "classnames";
 import Image from "next/image";
 import { useState } from "react";
+import { generateImgUrl, generateVideoUrl } from "./helpers";
 
-const generateVideoSrc = (videoId: string, srcType: "img" | "embed") => {
-  return srcType === "img"
-    ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-    : `https://www.youtube.com/embed/${videoId}?rel=0`;
+type Asset = {
+  type: "image" | "video";
+  name: string;
 };
 
 export default function PicturesDisplaySection({
@@ -15,23 +15,25 @@ export default function PicturesDisplaySection({
 }: {
   product: Product;
 }) {
-  const imagesUrls = product.videoIds
-    ? [...product.imagesUrls, ...product.videoIds]
-    : product.imagesUrls;
-  const [chosenImage, setChosenImage] = useState<string>(imagesUrls[0]);
-
-  const isVideo =
-    product.videoIds &&
-    product.videoIds.length > 0 &&
-    !chosenImage.includes("assets");
+  const imgAssets: Asset[] = product.imagesUrls.map((img) => ({
+    type: "image",
+    name: img
+  }));
+  const videoAssets: Asset[] =
+    product.videoIds?.map((video) => ({
+      type: "video",
+      name: video
+    })) ?? [];
+  const assets = [...imgAssets, ...videoAssets];
+  const [chosenAsset, setChosenAsset] = useState<Asset>(assets[0]);
 
   // TODO: add index to picture to determain order, then sort here before display
 
   return (
     <div className='flex-none h-full w-[45%]'>
-      {isVideo ? (
+      {chosenAsset.type === "video" ? (
         <iframe
-          src={generateVideoSrc(chosenImage, "embed")}
+          src={generateVideoUrl(chosenAsset.name, "embed")}
           title='product introduction video'
           width={384}
           height={384}
@@ -41,7 +43,7 @@ export default function PicturesDisplaySection({
         />
       ) : (
         <Image
-          src={chosenImage}
+          src={generateImgUrl(chosenAsset.name)}
           alt='picture of the product'
           width={384}
           height={384}
@@ -50,24 +52,24 @@ export default function PicturesDisplaySection({
       )}
 
       <ul className='flex flex-wrap gap-2 py-4 overflow-auto'>
-        {imagesUrls.map((imgUrl) => (
+        {assets.map((asset) => (
           <a
-            key={imgUrl}
+            key={asset.name}
             className='cursor-pointer hover:opacity-70'
-            onClick={() => setChosenImage(imgUrl)}
+            onClick={() => setChosenAsset(asset)}
           >
             <Image
               src={
-                imgUrl.includes("assets")
-                  ? imgUrl
-                  : generateVideoSrc(imgUrl, "img")
+                asset.type === "image"
+                  ? generateImgUrl(asset.name)
+                  : generateVideoUrl(asset.name, "img")
               }
               alt='small picture of the product'
               width={88}
               height={88}
               className={classNames("w-auto h-[88px]", {
-                "border-2 border-stone-700 opacity-70": chosenImage === imgUrl,
-                "border-2 border-slate-200": chosenImage !== imgUrl
+                "border-2 border-stone-700 opacity-70": chosenAsset === asset,
+                "border-2 border-slate-200": chosenAsset !== asset
               })}
             />
           </a>

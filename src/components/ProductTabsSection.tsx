@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 import { FullProduct } from "@/queries/productQueries";
+import { generateImgUrl } from "./helpers";
 
 export default function ProductTabsSection({
   product
@@ -48,12 +49,11 @@ export default function ProductTabsSection({
           product.instructionImageUrls.map((instructionImgUrl) => (
             <Image
               key={instructionImgUrl}
-              src={instructionImgUrl}
+              src={generateImgUrl(instructionImgUrl)}
               alt='picture of planting guildence of the product'
               width={385}
               height={490}
               className='w-auto'
-              // style={{ width: "auto", }}
             />
 
             // <p>
