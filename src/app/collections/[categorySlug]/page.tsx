@@ -1,4 +1,5 @@
-import { BrowsingSection, NavigationWrapper } from "@/components";
+import BrowsingSection from "../../../components/BrowsingSection";
+import NavigationWrapper from "../../../components/NavigationWrapper";
 import { ALL_CATEGORIES } from "@/components/constants";
 import { test_products } from "@/components/testData";
 

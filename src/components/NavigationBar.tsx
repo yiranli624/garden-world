@@ -3,7 +3,7 @@ import classNames from "classnames";
 import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
-import { NavItems } from "./helpers";
+import { NavItems } from "./NavigationWrapper";
 
 export default function NavigationBar({
   allNavItems

@@ -1,6 +1,5 @@
 import "./globals.css";
-import { NavigationBar, SearchBar } from "@/components";
-import { generateNavItems } from "@/components/helpers";
+import SearchBar from "@/components/SearchBar";
 
 export default function RootLayout({
   children

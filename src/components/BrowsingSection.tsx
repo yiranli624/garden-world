@@ -1,7 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { ProductItem } from "@/components/testData";
-import { FiltersSection, ItemCard } from "./";
+import FiltersSection from "./FiltersSection";
+import ItemCard from "./ItemCard";
 
 export default function BrowsingSection({
   listItems

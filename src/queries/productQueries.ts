@@ -1,3 +1,4 @@
+import "server-only";
 import { db } from "@/database";
 import { Category, Product } from "@/types";
 
@@ -6,7 +7,7 @@ export type FullProduct = Product & {
   collections: Category[];
 };
 
-export async function getProduct(productSlug: string) {
+export async function getProduct(productSlug: string): Promise<FullProduct> {
   const rawProduct = await db
     .selectFrom("product")
     .selectAll()
