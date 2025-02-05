@@ -2,6 +2,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { db } from "@/database";
 import { parse } from "@fast-csv/parse";
+import BigNumber from "bignumber.js";
 import fs from "fs/promises";
 import path from "path";
 
@@ -45,7 +46,8 @@ function changeStringToArray(str: string) {
   return str
     .trim()
     .split(",")
-    .filter((eachStr) => eachStr !== "");
+    .filter((eachStr) => eachStr !== "")
+    .map((eachStr) => eachStr.trim());
 }
 
 function changeStringToNumber(options: {
@@ -72,7 +74,8 @@ function changeStringToNumber({
     return undefined;
   }
   if (str) {
-    return replaceDecimal ? Number(str.replace(".", "")) : Number(str);
+    let strNum = new BigNumber(str);
+    return replaceDecimal ? strNum.times(100).toNumber() : Number(str);
   }
   throw new Error(`The ${str} should not be undefined`);
 }
