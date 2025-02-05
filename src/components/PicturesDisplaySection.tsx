@@ -68,8 +68,9 @@ export default function PicturesDisplaySection({
               width={88}
               height={88}
               className={classNames("w-auto h-[88px]", {
-                "border-2 border-stone-700 opacity-70": chosenAsset === asset,
-                "border-2 border-slate-200": chosenAsset !== asset
+                "border-2 border-stone-700 opacity-70":
+                  chosenAsset.name === asset.name,
+                "border-2 border-slate-200": chosenAsset.name !== asset.name
               })}
             />
           </a>
