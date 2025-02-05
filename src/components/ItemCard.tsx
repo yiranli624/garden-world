@@ -20,8 +20,10 @@ export default function ItemCard({ listItem }: { listItem: FullProduct }) {
         <Image
           src={generateImgUrl(listItem.imagesUrls[0])}
           alt='picture of the selling item'
-          width={384}
-          height={384}
+          width={236}
+          height={236}
+          style={{ width: "auto", height: "236px" }}
+          priority
         />
         {isInStock && (
           <Image
