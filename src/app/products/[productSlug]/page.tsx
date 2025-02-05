@@ -6,6 +6,7 @@ import PicturesDisplaySection from "@/components/PicturesDisplaySection";
 import ProductInfoSection from "@/components/ProductInfoSection";
 import ProductTabsSection from "@/components/ProductTabsSection";
 import { getCategories } from "@/queries/categoryQueries";
+import getAnnouncements from "@/queries/announcementQueries";
 
 export default async function ProductPage({
   params
@@ -14,8 +15,13 @@ export default async function ProductPage({
 }) {
   const productSlug = (await params).productSlug;
   const allCategories = await getCategories();
-
+  const allAnnouncements = await getAnnouncements();
   const chosenProduct = await getProduct(productSlug);
+
+  const productAnnouncements = allAnnouncements.filter(
+    (announcement) =>
+      announcement.location === "product" || announcement.location === "both"
+  );
 
   if (!chosenProduct) {
     redirect("/");
@@ -30,6 +36,7 @@ export default async function ProductPage({
           <ProductInfoSection
             product={chosenProduct}
             allCategories={allCategories}
+            announcements={productAnnouncements}
           />
         </div>
         <ProductTabsSection product={chosenProduct} />

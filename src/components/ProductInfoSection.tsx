@@ -5,13 +5,16 @@ import { useState } from "react";
 import classNames from "classnames";
 import { FullProduct } from "@/queries/productQueries";
 import { FullCategory } from "@/queries/categoryQueries";
+import { Announcement } from "@/types";
 
 export default function ProductInfoSection({
   product,
-  allCategories
+  allCategories,
+  announcements
 }: {
   product: FullProduct;
   allCategories: FullCategory[];
+  announcements: Announcement[];
 }) {
   const [quantity, setQuantity] = useState(1);
 
@@ -108,11 +111,13 @@ export default function ProductInfoSection({
         </button>
       </div>
 
-      <div className='h-1/5 bg-olive flex flex-col items-center justify-center p-2'>
-        {/* {product.specialSellMessages?.map((message, ind) => (
-          <p key={ind}>{message}</p>
-        ))} */}
-      </div>
+      {announcements.length > 0 && (
+        <div className='h-1/5 bg-olive flex flex-col items-center justify-center p-2'>
+          {announcements.map((announcement, ind) => (
+            <p key={ind}>{announcement.text}</p>
+          ))}
+        </div>
+      )}
 
       <div className='text-base'>
         <p className=''>Collections: </p>
