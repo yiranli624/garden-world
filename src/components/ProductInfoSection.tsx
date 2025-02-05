@@ -3,13 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import classNames from "classnames";
-import { ALL_CATEGORIES } from "./constants";
 import { FullProduct } from "@/queries/productQueries";
+import { FullCategory } from "@/queries/categoryQueries";
 
 export default function ProductInfoSection({
-  product
+  product,
+  allCategories
 }: {
   product: FullProduct;
+  allCategories: FullCategory[];
 }) {
   const [quantity, setQuantity] = useState(1);
 
@@ -131,7 +133,7 @@ export default function ProductInfoSection({
               />
               <p className='text-sm'>
                 {
-                  ALL_CATEGORIES.find(
+                  allCategories.find(
                     (categoryMenu) => categoryMenu.slug === collection.slug
                   )?.label
                 }

@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ALL_CATEGORIES } from "./constants";
 import { FullProduct } from "@/queries/productQueries";
+import { FullCategory } from "@/queries/categoryQueries";
 
-const getBreadCrumbs = (chosenProduct: FullProduct) => {
-  const lastCategory = ALL_CATEGORIES.find(
+const getBreadCrumbs = (
+  chosenProduct: FullProduct,
+  allCategories: FullCategory[]
+) => {
+  const lastCategory = allCategories.find(
     (category) => category.slug === chosenProduct.category.slug
   );
   if (lastCategory?.type === "nav-menu") {
-    const parentCategory = ALL_CATEGORIES.find(
-      (category) => category.slug === lastCategory?.parent
+    const parentCategory = allCategories.find(
+      (category) => category.slug === lastCategory?.parentCategory?.slug
     );
     return [
       { href: "/", label: "Home" },
@@ -22,8 +25,14 @@ const getBreadCrumbs = (chosenProduct: FullProduct) => {
   }
 };
 
-export default function NavBreadCrumbs({ product }: { product: FullProduct }) {
-  const breadCrumbs = getBreadCrumbs(product);
+export default function NavBreadCrumbs({
+  product,
+  allCategories
+}: {
+  product: FullProduct;
+  allCategories: FullCategory[];
+}) {
+  const breadCrumbs = getBreadCrumbs(product, allCategories);
 
   return (
     <ul className='flex mb-6 items-center text-slate-500'>
