@@ -1,7 +1,6 @@
-import { getAllProducts } from "@/queries/productQueries";
+import { getAllProducts, getCategories } from "@/app/cachedQueries";
 import BrowsingSection from "../../../components/BrowsingSection";
 import NavigationWrapper from "../../../components/NavigationWrapper";
-import { getCategories } from "@/queries/categoryQueries";
 
 export default async function CategoryPage({
   params

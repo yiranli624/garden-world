@@ -1,4 +1,4 @@
-import getAnnouncements from "@/queries/announcementQueries";
+import { getAnnouncements } from "./cachedQueries";
 import "./globals.css";
 import SearchBar from "@/components/SearchBar";
 

@@ -1,6 +1,6 @@
 import { Category } from "@/types";
-import { getCategories } from "@/queries/categoryQueries";
 import NavigationBar from "./NavigationBar";
+import { getCategories } from "@/app/cachedQueries";
 
 export type NavItems = {
   slug: string;

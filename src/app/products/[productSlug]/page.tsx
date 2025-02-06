@@ -1,12 +1,14 @@
 import { redirect } from "next/navigation";
-import { getProduct } from "@/queries/productQueries";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import NavBreadCrumbs from "@/components/NavBreadCrumbs";
 import PicturesDisplaySection from "@/components/PicturesDisplaySection";
 import ProductInfoSection from "@/components/ProductInfoSection";
 import ProductTabsSection from "@/components/ProductTabsSection";
-import { getCategories } from "@/queries/categoryQueries";
-import getAnnouncements from "@/queries/announcementQueries";
+import {
+  getProduct,
+  getCategories,
+  getAnnouncements
+} from "@/app/cachedQueries";
 
 export default async function ProductPage({
   params

@@ -1,6 +1,6 @@
-import { getAllProducts } from "@/queries/productQueries";
 import BrowsingSection from "../components/BrowsingSection";
 import NavigationWrapper from "../components/NavigationWrapper";
+import { getAllProducts } from "./cachedQueries";
 
 export default async function Home() {
   const listItems = await getAllProducts();

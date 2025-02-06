@@ -7,7 +7,9 @@ export type FullProduct = Product & {
   collections: Category[];
 };
 
-export async function getProduct(productSlug: string): Promise<FullProduct> {
+export async function getProductData(
+  productSlug: string
+): Promise<FullProduct> {
   const rawProduct = await db
     .selectFrom("product")
     .selectAll()
@@ -45,7 +47,7 @@ export async function getProduct(productSlug: string): Promise<FullProduct> {
   return chosenProduct;
 }
 
-export async function getAllProducts(): Promise<FullProduct[]> {
+export async function getAllProductsData(): Promise<FullProduct[]> {
   const rawProducts = await db
     .selectFrom("product")
     .select("slug")
@@ -54,7 +56,7 @@ export async function getAllProducts(): Promise<FullProduct[]> {
 
   return Promise.all(
     rawProducts.map(async (product) => {
-      return await getProduct(product.slug);
+      return await getProductData(product.slug);
     })
   );
 }

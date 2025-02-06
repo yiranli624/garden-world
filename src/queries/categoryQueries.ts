@@ -6,7 +6,7 @@ export type FullCategory = Category & {
   parentCategory?: Category;
 };
 
-export async function getCategories(): Promise<FullCategory[]> {
+export async function getCategoriesData(): Promise<FullCategory[]> {
   const rawCategories = await db.selectFrom("category").selectAll().execute();
 
   const flatCategories = await Promise.all(
