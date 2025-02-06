@@ -18,7 +18,7 @@ type NoneNavCategory = {
   label: string;
 };
 
-export type Category = NavRootCategory | NavMenuCategory | NoneNavCategory;
+type Category = NavRootCategory | NavMenuCategory | NoneNavCategory;
 
 type VegetableCategory =
   | "Tong Ho"

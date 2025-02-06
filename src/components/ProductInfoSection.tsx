@@ -113,8 +113,8 @@ export default function ProductInfoSection({
 
       {announcements.length > 0 && (
         <div className='h-1/5 bg-olive flex flex-col items-center justify-center p-2'>
-          {announcements.map((announcement, ind) => (
-            <p key={ind}>{announcement.text}</p>
+          {announcements.map((announcement) => (
+            <p key={announcement.id}>{announcement.text}</p>
           ))}
         </div>
       )}

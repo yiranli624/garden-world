@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ProductItem } from "@/components/testData";
 import Link from "next/link";
 import { FullProduct } from "@/queries/productQueries";
 import { generateImgUrl } from "./helpers";
