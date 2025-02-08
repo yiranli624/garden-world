@@ -17,10 +17,20 @@ export default function ProductTabsSection({
     : ["PLANTING INFORMATION", "ADDITIONAL INFORMATION"];
 
   const [chosenTab, setChosenTab] = useState(0);
+  const getAdditionalInfo = () => {
+    return Object.entries(product.additionalInfo).map(([key, value], ind) => (
+      <div key={ind} className='flex px-2 rounded justify-center'>
+        <p className='px-2 border-b-2 border-lime-700'>{key}:</p>
+        {typeof value === "string" && (
+          <p className='px-2 border-b-2 border-stone-200'>{value}</p>
+        )}
+      </div>
+    ));
+  };
 
   return (
     <div className='w-full h-full'>
-      <ul className='flex text-base gap-1'>
+      <ul className='flex text-base gap-1 justify-center'>
         {tabs.map((tabName, index) => (
           <li
             className={classNames("cursor-pointer relative border-t-4", {
@@ -44,7 +54,7 @@ export default function ProductTabsSection({
           </li>
         ))}
       </ul>
-      <div className='flex flex-wrap gap-10 bg-slate-100 p-6 justify-between '>
+      <div className='flex gap-10 bg-slate-100 py-10 justify-center'>
         {chosenTab === 0 &&
           product.instructionImageUrls.map((instructionImgUrl) => (
             <Image
@@ -55,15 +65,12 @@ export default function ProductTabsSection({
               height={490}
               className='w-auto'
             />
-
-            // <p>
-            //   {product.englishDescription} {product.chineseDescription}
-            //   {product.englishDescription} {product.chineseDescription}
-            //   {product.englishDescription} {product.chineseDescription}
-            //   {product.englishDescription} {product.chineseDescription}
-            // </p>
           ))}
-        {chosenTab === 1 && <p>{JSON.stringify(product.additionalInfo)}</p>}
+        {chosenTab === 1 && (
+          <div className='flex flex-col gap-4 justify-center'>
+            {getAdditionalInfo()}
+          </div>
+        )}
       </div>
     </div>
   );

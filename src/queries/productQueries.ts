@@ -9,13 +9,16 @@ export type FullProduct = Product & {
 
 export async function getProductData(
   productSlug: string
-): Promise<FullProduct> {
+): Promise<FullProduct | undefined> {
   const rawProduct = await db
     .selectFrom("product")
     .selectAll()
     .where("product.slug", "=", productSlug)
-    .executeTakeFirstOrThrow();
-
+    .executeTakeFirst();
+  if (!rawProduct) {
+    console.log(`No product found, product slug is ${productSlug}`);
+    return;
+  }
   const productCategory = await db
     .selectFrom("category")
     .selectAll()
@@ -56,7 +59,11 @@ export async function getAllProductsData(): Promise<FullProduct[]> {
 
   return Promise.all(
     rawProducts.map(async (product) => {
-      return await getProductData(product.slug);
+      const productData = await getProductData(product.slug);
+      if (!productData) {
+        throw new Error(`No product found, slug is ${product.slug}`);
+      }
+      return productData;
     })
   );
 }

@@ -35,7 +35,7 @@ export default function NavBreadCrumbs({
   const breadCrumbs = getBreadCrumbs(product, allCategories);
 
   return (
-    <ul className='flex mb-6 items-center text-slate-500'>
+    <ul className='flex px-32 mb-6 items-center text-slate-500'>
       {breadCrumbs?.map((eachRoute) => (
         <Link
           key={eachRoute.href}
