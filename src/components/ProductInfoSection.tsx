@@ -112,7 +112,7 @@ export default function ProductInfoSection({
       </div>
 
       {announcements.length > 0 && (
-        <div className='h-1/5 bg-olive flex flex-col items-center justify-center p-2'>
+        <div className='h-1/5 bg-melon flex flex-col items-center justify-center p-2'>
           {announcements.map((announcement) => (
             <p key={announcement.id}>{announcement.text}</p>
           ))}
@@ -126,7 +126,7 @@ export default function ProductInfoSection({
             <Link
               key={ind}
               href={`/collections/${collection.slug}`}
-              className='flex items-center p-1 cursor-pointer text-lime-700 hover:bg-olive'
+              className='flex items-center p-1 cursor-pointer text-lime-700 hover:bg-melon'
             >
               {/* hover:scale-110 hover:text-slate-700 
               hover:shadow-lg hover:bg-lime-700 hover:text-white hover:rounded-sm */}

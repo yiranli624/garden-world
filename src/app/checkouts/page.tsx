@@ -1,11 +1,12 @@
 import ExpressPay from "@/components/ExpressPay";
+import Subscription from "@/components/Subscription";
 
 export default function CheckoutPage() {
   return (
     <div className='border-t-2 flex h-screen'>
       <div className='w-3/5 pl-60 pr-10 py-10 border-r-4 flex flex-col gap-10'>
         <ExpressPay />
-        <div>contact</div>
+        <Subscription />
         <div>Delivery</div>
         <div>payment</div>
         <div>
